@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import MainBar from "../components/MainBar";
-import Card1 from '../components/cards/Card1'
+import CardM from "../components/cards/CardM";
+import CardL from "../components/cards/CardL";
+import CardS from "../components/cards/CardS";
+
 class Main extends Component {
   render() {
     return (
@@ -8,13 +11,17 @@ class Main extends Component {
         <MainBar />
 
         <div className="panel-container">
+          <span className="panel-container-title"> Welcome to HMS System</span>
+          <div className="content-cards">
+       
+        
+            <CardS title={"Free Rooms"} content={10} />
+            <CardS title={"Today Checkings "} content={3} />
+            <CardS title={"Today Checkout "} content={4} />
+            
 
-           <span className="panel-container-title"> Welcome to HMS System</span>
-
-        <Card1/>
+          </div>
         </div>
-    
-
       </div>
     );
   }
