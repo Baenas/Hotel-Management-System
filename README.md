@@ -1,6 +1,6 @@
 # Documentacion FrontEnd HMS
 # Description
-Hotel management system (HMS) is a software used to manage an hotel. 
+Hotel management system (HMS) is a software to manage an hotel. 
 
 
 # Rutas 
