@@ -3,8 +3,8 @@
 Hotel management system (HMS) is a software to manage an hotel. 
 
 
-# Rutas 
-| Ruta    | Descripcion                       |
+# Rutes
+| Rutes    | Description                       |
 | :------ | --------------------------------- |
 | / 	  | Home|
 | /login  | Login Form        |
