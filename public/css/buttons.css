@@ -1,0 +1,30 @@
+.button-apps {
+  border: solid black 1px;
+  width: 15%;
+  height: 60px;
+  margin: 0.3%;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 160%;
+  font-weight: bold;
+}
+.button-apps a{
+  color:black;
+  text-decoration:none ;
+}
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding:.2%;
+  justify-content: flex-start;
+  align-items: center;
+}
+.button-red{
+background-color:lightcoral;
+}
+.button-green{
+background-color:lightgreen;
+}

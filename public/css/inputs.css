@@ -1,0 +1,23 @@
+.input-text-form{
+    height: 40px;
+    width: 70%;
+    font-size: 30px;
+    background-color: lightgrey;
+    margin: 10px;
+}
+
+.input-list-form{
+    border: none ;
+    height: 40px;
+    width: 70%;
+    font-size: 30px;
+    background-color: lightgrey;
+    margin: 10px;
+}
+.input-text-form a, .input-list-form a  {
+  color:black;
+  text-decoration:none ;
+}
+.input-text-item{
+  color: rgb(114, 114, 114);
+}

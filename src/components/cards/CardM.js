@@ -4,20 +4,13 @@ class CardM extends Component {
   render() {
     return (
       <div className="card-container-M">
-        <div className="card-container-title">Rooms available</div>
+       <div className="card-container-title">{this.props.title}</div>
         <table>
+          <tbody>
           <tr>
-            <th>Empty</th>
-         
+            <td className="card-container-content">{this.props.content}</td>
           </tr>
-          <tr>
-            <td>Jill</td>
-          
-          </tr>
-          <tr>
-            <td>D</td>
-        
-          </tr>
+          </tbody>
         </table>
       </div>
     );
