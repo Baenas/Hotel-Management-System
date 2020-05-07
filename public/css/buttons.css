@@ -1,7 +1,7 @@
 .button-apps {
   border: solid black 1px;
   width: 15%;
-  height: 60px;
+  height: 80px;
   margin: 0.3%;
   display: flex;
   flex-wrap: wrap;

@@ -3,15 +3,21 @@ class MainBar extends Component {
   render() {
     return (
       <div>
-        <nav className="top-main-bar">
-        <div className="top-main-bar-time" >
-            <span >  13:50 </span>         <span > 03/05/2020</span>  
-        </div >
-         <div className="top-main-bar-guest" >
-            <span >  Guest Name : none</span>  
-        </div >
-        
-        </nav>
+      
+          <div className="navbar">
+            <a href="/">Dashboard</a>
+            <div className="dropdown">
+              <button className="dropbtn">
+                Rooms
+                <i className="fa fa-caret-down"></i>
+              </button>
+              <div className="dropdown-content">
+                <a href="/rooms">All Rooms</a>
+          
+              </div>
+            </div>
+          </div>
+       
       </div>
     );
   }

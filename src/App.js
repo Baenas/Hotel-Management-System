@@ -19,10 +19,10 @@ function App() {
           <Route exact path="/">
             <Main />
           </Route>
-          <Route exact path="/rooms">
+           <Route exact path="/rooms">
             <Rooms />
           </Route>
-          <Route exact path="/rooms/1">
+        <Route exact path="/rooms/1">
             <RoomId />
           </Route>
           <Route exact path="/guest">
@@ -30,7 +30,7 @@ function App() {
           </Route>
             <Route exact path="/guest/1">
             <GuestID />
-          </Route>
+          </Route> 
         </Switch>
       </Router>
     </div>

@@ -1,18 +1,16 @@
 import React, { Component } from "react";
-import CardM from "../components/cards/CardM";
 import CardL from "../components/cards/CardL";
-import CardS from "../components/cards/CardS";
+import Sidebar from "../components/Sidebar";
+
 import AppButton from "../components/buttons/AppButton";
-import MainBar from "../components/MainBar";
+
 import InputText from "../components/input/InputText";
 class RoomId extends Component {
   render() {
     return (
-      <div>
-        <MainBar />
-        <div className="button-container">
-          <AppButton style={"button-apps"} path="/rooms" text="Go Back" />
-        </div>
+      <div className="main" >
+          <Sidebar />
+      
         <CardL title="Guest Info" />
 
         <InputText
