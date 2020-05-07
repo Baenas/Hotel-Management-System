@@ -8,3 +8,54 @@ a {
 .dashboard-container{
   display: flex;
 }
+.login-box{
+
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto ;
+}
+.login-box-title {
+
+ font-family: Arial, Helvetica, sans-serif;
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px ;
+  border-bottom: solid .8px rgba(128, 128, 128, 0.411);
+  
+}
+.login-box-input {
+font-family: Arial, Helvetica, sans-serif;
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px ;
+  border: solid .5px rgba(128, 128, 128, 0.411);
+    box-shadow: rgb(116, 116, 116) 2px 2px 2px;
+
+}
+.login-box-submit {
+border: none;
+  width:50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px ;
+    box-shadow: rgb(116, 116, 116) 2px 2px 2px;
+}
+.container-forms{
+  border: solid rgba(105, 105, 105, 0.301) 1px;
+  padding: 10px;
+overflow-y: scroll;
+ height: 300px;
+}
+@media only screen and (max-width: 600px) {
+.dashboard-container{
+  display: flex;
+ flex-direction: column;
+  }
+}

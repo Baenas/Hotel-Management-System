@@ -1,15 +1,16 @@
 .input-text-form{
-    height: 40px;
-    width: 70%;
-    font-size: 30px;
-    background-color: lightgrey;
-    margin: 10px;
+    height: 20px;
+    font-size:15px;
+    border: 0px;
+    background-color: rgba(214, 204, 186, 0.589);
+    margin: 2px;
+    color:gray;
 }
 
 .input-list-form{
     border: none ;
     height: 40px;
-    width: 70%;
+  
     font-size: 30px;
     background-color: lightgrey;
     margin: 10px;

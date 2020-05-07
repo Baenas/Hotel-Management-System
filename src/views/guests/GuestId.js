@@ -5,11 +5,12 @@ import InputText from "../../components/input/InputText";
 import CardL from "../../components/cards/CardL";
 
 class GuestId extends Component {
-    render(){
-        return(<div>
-                 <MainBar />
-                  <div className="button-container">
-          <AppButton style={"button-apps"} path="/rooms" text="Go Back" />
+  render() {
+    return (
+      <div>
+        <MainBar />
+        <div className="button-container">
+          <AppButton styl={"button-apps"} path="/rooms" text="Go Back" />
         </div>
         <CardL title="Guest Info" />
 
@@ -25,39 +26,39 @@ class GuestId extends Component {
           value=""
           type="text"
         />
-          <InputText
+        <InputText
           class="input-text-form"
           placeholder="Guest Phone"
           value=""
           type="text"
         />
-           <InputText
+        <InputText
           class="input-text-form"
           placeholder="Guest Country"
           value=""
           type="text"
         />
-          <InputText
+        <InputText
           class="input-text-form"
           placeholder="Guest Full Email"
           value=""
           type="text"
         />
-          <InputText
+        <InputText
           class="input-text-form"
           placeholder="Guest City "
           value=""
           type="text"
         />
-          <InputText
+        <InputText
           class="input-text-form"
           placeholder="Passport or CardID"
           value=""
           type="text"
         />
-        </div>)
-    }
+      </div>
+    );
+  }
 }
-
 
 export default GuestId;

@@ -1,17 +1,19 @@
 import React, { Component } from "react";
-import MainBar from "../../components/MainBar";
-import AppButton from "../../components/buttons/AppButton";
 import InputText from "../../components/input/InputText";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Guest extends Component {
   render() {
     return (
       <div>
-        <MainBar />
-        <InputText class="input-text-form" placeholder="Guest ID" type="text" />
+        
+      
+     
 
         <div className="panel-container">
+         
+        <InputText class="input-text-form"  type="text" />
+         
           <table>
             <tbody>
               <tr>
@@ -31,6 +33,7 @@ class Guest extends Component {
 
           {/*   <Link to="/guest/1"></Link> */}
         </div>
+        
       </div>
     );
   }

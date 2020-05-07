@@ -9,11 +9,16 @@ class Sidebar extends Component {
             <span className="iconify" data-icon="ant-design:dashboard-twotone" data-inline="true"></span>
            <span className="icon-text">Dashboard</span> 
           </a>
-           <a className="sidenav-list-item"  href="/">
+           <a className="sidenav-list-item"  href="/rooms">
           <span className="iconify" data-icon="icomoon-free:files-empty" data-inline="false"></span>
            <span className="icon-text">Rooms</span> 
+             
           </a>
-          
+             <a className="sidenav-list-item"  href="/guest">
+          <span className="iconify" data-icon="ion-man-outline" data-inline="false"></span>
+           <span className="icon-text">Guest</span> 
+             
+          </a>
        
         </div>
       </div>

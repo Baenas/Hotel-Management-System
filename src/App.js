@@ -1,14 +1,12 @@
 import React from "react";
+import Login from "./views/Login";
 import Main from "./views/Main";
 import Rooms from "./views/Rooms";
-import RoomId from "./views/RoomId";
-import GuestID from "./views/guests/GuestId";
+import RoomsId from "./views/RoomId";
 
-import Guests from "./views/guests/Guest";
-
-import MainBar from "./components/MainBar";
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import {   BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <div className="">
@@ -16,21 +14,11 @@ function App() {
 
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
-           <Route exact path="/rooms">
-            <Rooms />
-          </Route>
-        <Route exact path="/rooms/1">
-            <RoomId />
-          </Route>
-          <Route exact path="/guest">
-            <Guests />
-          </Route>
-            <Route exact path="/guest/1">
-            <GuestID />
-          </Route> 
+            <PublicRoute restricted={true} component={Login} path="/" exact />
+          <PrivateRoute component={Main} path="/home" exact />
+           <PrivateRoute component={Rooms} path="/rooms" exact />
+           <PrivateRoute component={RoomsId} path="/rooms/1" exact />
+
         </Switch>
       </Router>
     </div>
