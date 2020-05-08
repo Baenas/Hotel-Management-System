@@ -1,5 +1,7 @@
+import cookie from 'react-cookies'
+
 export const isLogin = () => {
-    if (localStorage.getItem("LogKey")) {
+    if (cookie.load('currentUser')) {
         return true;
     }
 

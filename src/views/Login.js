@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import apiClient from "../services/loginService";
+import cookie from 'react-cookies'
+
 class Login extends Component {
   state = {
     username: "",
@@ -7,6 +9,12 @@ class Login extends Component {
     isLoggedIn: false,
     user: "",
   };
+  componentDidMount() {
+    const { history } = this.props;
+    if (cookie.load('currentUser')) {
+      history.push("/home");
+    }
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     const { history } = this.props;
@@ -15,19 +23,21 @@ class Login extends Component {
       apiClient
         .login({ username, password })
         .then(({ data: user }) => {
-           localStorage.setItem("LogKey", user.username);
+
           this.setState({
             isLoggedIn: true,
             user,
-               showError: "Ok",
-               
+            showError: "Ok",
+
           });
-               
+
+          cookie.save('currentUser', user, { path: '/' })
+          history.push("/home");
         })
         .catch((error) => {
-           this.setState({
-        showError: "Error",
-      });
+          this.setState({
+            showError: "Error",
+          });
         });
       this.clearForm();
     } else {

@@ -1,154 +1,78 @@
 import React, { Component } from "react";
 import CardL from "../components/cards/CardL";
+import axios from "axios";
 import Sidebar from "../components/Sidebar";
 
 import InputText from "../components/input/InputText";
 class RoomId extends Component {
+
+  state = {
+    room: [],
+
+  }
+
+  componentDidMount() {
+    let id = this.props.match.params.id
+    axios.get("http://localhost:3000/rooms/" + id).then((room) => {
+      this.setState({
+        room: room.data,
+      })
+      console.log(this.state.room)
+    })
+
+  }
   render() {
+    const { room } = this.state
     return (
-      <div className="main dashboard-container ">
+      <div className="main dashboard-container">
         <Sidebar />
         <div className="container-forms">
           <CardL title="Guest Info" />
+          <input className="input-text-form" placeholder="Guest ID" type="text" />
 
-          <InputText
-            class="input-text-form"
-            placeholder="Guest ID"
-            value=""
-            type="text"
-          />
-          <InputText
-            class="input-text-form"
-            placeholder="Guest Full Name"
-            value=""
-            type="text"
-          />
+          <input className="input-text-form" placeholder="Guest Full name" type="text" />
+
           <CardL title="Room Info" />
-          <InputText
-            class="input-text-form"
-            placeholder="Room Number"
-            value=""
-            type="text"
-          />
+          <label className="" ><b>Number</b></label>
+          <input className="input-text-form" disabled placeholder="Room Number" type="text" defaultValue={room.roomName} />
+          <label className="" ><b>Type</b></label>
+          <input className="input-text-form" disabled placeholder="Room Type" type="text" defaultValue={room.roomType} />
+          <label className="" ><b>Floor</b></label>
+          <input className="input-text-form" disabled placeholder="Room Floor" type="text" defaultValue={room.roomFloor} />
+          <label className="" ><b>Wifi</b></label>
+          <input className="input-text-form" disabled placeholder="Room Wifi" type="text" defaultValue={room.roomWifi} />
+          <label className="" ><b>Phone</b></label>
+          <input className="input-text-form" disabled placeholder="Room Phone" type="text" defaultValue={room.roomPhone} />
 
-          <InputText
-            class="input-text-form"
-            placeholder="Room Type"
-            value=""
-            type="text"
-          />
-
-          <InputText
-            class="input-text-form"
-            placeholder="Room Floor"
-            value=""
-            type="text"
-          />
-          <InputText
-            class="input-text-form"
-            placeholder="Room Wifi"
-            value=""
-            type="text"
-          />
-          <InputText
-            class="input-text-form"
-            placeholder="Room Phone"
-            value=""
-            type="text"
-          />
         </div>
         <div className="container-forms">
           <CardL title="Extra Guest" />
-          <InputText
-            class="input-text-form"
-            placeholder="Name"
-            value=""
-            type="text"
-          />
-          <InputText
-            class="input-text-form"
-            placeholder="Name"
-            value=""
-            type="text"
-          />
-          <InputText
-            class="input-text-form"
-            placeholder="Name"
-            value=""
-            type="text"
-          />
+          <input className="input-text-form" placeholder="Name" type="text" />
+          <input className="input-text-form" placeholder="Name" type="text" />
+          <input className="input-text-form" placeholder="Name" type="text" />
+          <input className="input-text-form" placeholder="Name" type="text" />
+
+
         </div>
         <div className="container-forms">
           <CardL title="Remain breakfast" />
-          <InputText
-            class="input-text-form"
-            placeholder="3"
-            value=""
-            type="number"
-          />
-          <CardL title="Last Breakfast" />
-          <InputText
-            class="input-text-form"
-            placeholder="07/05/2020"
-            value=""
-            type="sting"
-          />
-             <InputText
-            class="input-text-form"
-            placeholder="06/05/2020"
-            value=""
-            type="sting"
-          />
-             <InputText
-            class="input-text-form"
-            placeholder="05/05/2020"
-            value=""
-            type="sting"
-          />
-             <InputText
-            class="input-text-form"
-            placeholder="04/05/2020"
-            value=""
-            type="sting"
-          />
-             <InputText
-            class="input-text-form"
-            placeholder="03/05/2020"
-            value=""
-            type="sting"
-          />
-           <InputText
-            class="input-text-form"
-            placeholder="02/05/2020"
-            value=""
-            type="sting"
-          />
-           <InputText
-            class="input-text-form"
-            placeholder="01/05/2020"
-            value=""
-            type="sting"
-          />
-          
+
+          <input className="input-text-form" placeholder="3" type="text" />
+          <CardL title="Latest Breakfast" />
+
+          <input className="input-text-form" placeholder="7/05/2020" type="text" />
+          <input className="input-text-form" placeholder="6/05/2020" type="text" />
+          <input className="input-text-form" placeholder="5/05/2020" type="text" />
+
+
         </div>
-          <div className="container-forms">
+        <div className="container-forms">
           <CardL title="Days Left" />
-          <InputText
-            class="input-text-form"
-            placeholder="1"
-            value=""
-            type="number"
-          />  <CardL title="Total days" />
-          <InputText
-            class="input-text-form"
-            placeholder="8"
-            value=""
-            type="number"
-          />
-          
-          
+
+
+
         </div>
-      </div>
+      </div >
     );
   }
 }
