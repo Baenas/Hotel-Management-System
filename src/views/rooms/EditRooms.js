@@ -20,7 +20,7 @@ class EditRoom extends Component {
         axios.get("http://localhost:3000/rooms").then((rooms) => {
             this.setState({
                 rooms: rooms.data,
-                roomId: rooms.data[0]._id
+
             })
 
         })
@@ -32,11 +32,13 @@ class EditRoom extends Component {
 
     }
     handleSubmit = (e) => {
+
+
         e.preventDefault();
 
         const { roomName, roomType, roomFloor, roomWifi, roomPhone, roomPrice } = this.state
 
-        axios.post('http://localhost:3000/rooms', {
+        axios.put('http://localhost:3000/rooms/' + this.state.thisroom._id, {
 
             roomName, roomType, roomFloor, roomWifi, roomPhone, roomPrice
         })
@@ -52,10 +54,12 @@ class EditRoom extends Component {
         })
 
 
+
     }
 
     handleFill = (e) => {
 
+        e.preventDefault();
 
         axios.get("http://localhost:3000/rooms/" + e.target.value).then((room) => {
             this.setState({
@@ -65,7 +69,9 @@ class EditRoom extends Component {
                 roomFloor: room.data.roomFloor,
                 roomPhone: room.data.roomPhone,
                 roomType: room.data.roomType,
-                roomPrice: room.data.roomPrice
+                roomPrice: room.data.roomPrice,
+
+
             })
         })
 
@@ -99,32 +105,37 @@ class EditRoom extends Component {
                     <input value="Find" type="submit" />
 
 
-                    <CardL title="Edit Room" />
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="container-forms">
 
-                    <label className="" ><b>Number</b></label>
-                    <input onChange={this.handleChange} name="roomName" className="input-text-form" defaultValue={this.state.roomName} placeholder="Room Number" type="text" />
-                    <label className="" ><b>Type</b></label>
+                            <CardL title="Edit Room" />
+
+                            <label className="" ><b>Number</b></label>
+                            <input onChange={this.handleChange} name="roomName" className="input-text-form" defaultValue={this.state.roomName} placeholder="Room Number" type="text" />
+                            <label className="" ><b>Type</b></label>
 
 
-                    <select name="roomType" onChange={this.handleChange} className="input-text-form" >
-                        <option defaultValue={this.state.roomType} value={this.state.roomType} >{this.state.roomType}</option>
-                        <option value="Double" >Double</option>
-                        <option value="Single" >Single</option>
-                    </select>
+                            <select name="roomType" onChange={this.handleChange} className="input-text-form" >
+                                <option defaultValue={this.state.roomType} value={this.state.roomType} >{this.state.roomType}</option>
+                                <option value="Double" >Double</option>
+                                <option value="Single" >Single</option>
+                            </select>
 
-                    <label className="" ><b>Floor</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" name="roomFloor" defaultValue={this.state.roomFloor} placeholder="Room Floor" type="text" />
-                    <label className="" ><b>Wifi</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" name="roomWifi" defaultValue={this.state.roomWifi} placeholder="Room Wifi" type="text" />
-                    <label className="" ><b>Phone</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" name="roomPhone" defaultValue={this.state.roomPhone} placeholder="Room Phone" type="text" />
-                    <label className="" ><b>Price</b></label>
-                    <input className="input-text-form" onClick={this.calculatePrice} name="roomPrice" defaultValue={this.state.roomPrice} placeholder="Price" type="text" />
-                </div>
-                <div className="container-forms">
-                    <input value="Add" type="submit" />
-                </div>
+                            <label className="" ><b>Floor</b></label>
+                            <input onChange={this.handleChange} className="input-text-form" name="roomFloor" defaultValue={this.state.roomFloor} placeholder="Room Floor" type="text" />
+                            <label className="" ><b>Wifi</b></label>
+                            <input onChange={this.handleChange} className="input-text-form" name="roomWifi" defaultValue={this.state.roomWifi} placeholder="Room Wifi" type="text" />
+                            <label className="" ><b>Phone</b></label>
+                            <input onChange={this.handleChange} className="input-text-form" name="roomPhone" defaultValue={this.state.roomPhone} placeholder="Room Phone" type="text" />
+                            <label className="" ><b>Price</b></label>
+                            <input className="input-text-form" onClick={this.calculatePrice} name="roomPrice" defaultValue={this.state.roomPrice} placeholder="Price" type="text" />
+
+                            <input value="Add" type="submit" />
+                        </div>
+                    </form>
+                </div >
             </div >
+
         )
     }
 }
