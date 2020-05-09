@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import AddRoom from './AddRoom'
-import EditRooms from './EdotRooms'
+import EditRooms from './EditRooms'
 
 class ManageRooms extends Component {
     render() {

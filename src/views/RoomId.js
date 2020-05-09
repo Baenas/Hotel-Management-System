@@ -3,7 +3,6 @@ import CardL from "../components/cards/CardL";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 
-import InputText from "../components/input/InputText";
 class RoomId extends Component {
 
   state = {

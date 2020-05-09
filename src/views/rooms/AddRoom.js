@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Sidebar from "../../components/Sidebar";
 import CardL from "../../components/cards/CardL";
 import axios from "axios";
-import EditRooms from './EdotRooms'
 class AddRoom extends Component {
 
     state = {
