@@ -3,7 +3,7 @@ import axios from "axios";
 class ApiClient {
   constructor() {
     this.apiClient = axios.create({
-      baseURL: process.env.REACT_APP_API
+      baseURL: process.env.REACT_APP_API_URL
 
     });
   }
