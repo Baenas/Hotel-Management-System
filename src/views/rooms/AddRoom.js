@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import Sidebar from "../../components/Sidebar";
 import CardL from "../../components/cards/CardL";
-import axios from "axios";
+import apiClient from '../../services/loginService';
+import { Redirect } from 'react-router-dom'
 class AddRoom extends Component {
-
     state = {
-
+        error: null,
+        redirect: null,
         roomName: "",
         roomType: "Double",
         roomFloor: "",
         roomWifi: "",
         roomPhone: "",
-        roomPrice: "100"
+        roomPrice: "100",
+        state: "Empty"
 
     }
 
@@ -19,13 +21,15 @@ class AddRoom extends Component {
 
     }
     handleSubmit = (e) => {
-        const { roomName, roomType, roomFloor, roomWifi, roomPhone, roomPrice } = this.state
+        e.preventDefault()
 
-        axios.post('http://localhost:3000/rooms', {
+        const { roomName, roomType, roomFloor, roomWifi, roomPhone, roomPrice, state } = this.state
+        apiClient.oneMoreRoom({ roomName, roomType, roomFloor, roomWifi, roomPhone, roomPrice, state }).then(() => {
+            this.setState({ redirect: "/rooms/" });
+        }).catch(() => {
+            this.setState({ error: "Not valid" });
 
-            roomName, roomType, roomFloor, roomWifi, roomPhone, roomPrice
         })
-
 
 
     }
@@ -58,6 +62,9 @@ class AddRoom extends Component {
 
     }
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div>
                 <Sidebar />
@@ -82,7 +89,10 @@ class AddRoom extends Component {
                         <input onChange={this.handleChange} className="input-text-form" name="roomPhone" placeholder="Room Phone" type="text" />
                         <label className="" ><b>Price</b></label>
                         <input className="input-text-form" onClick={this.calculatePrice} name="roomPrice" defaultValue={this.state.roomPrice} placeholder="Price" type="text" />
+                        <label className="" ><b>State</b></label>
+                        <input className="input-text-form" onClick={this.calculatePrice} name="roomPrice" defaultValue={this.state.state} placeholder="Price" type="text" />
                     </div>
+                    {this.state.error}
                     <div className="container-forms">
                         <input value="Add" type="submit" />
                     </div>

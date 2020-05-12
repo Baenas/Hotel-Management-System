@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import MainCards from "../components/cards/MainCards";
 import axios from "axios";
-
+import apiClient from "../services/loginService";
 class Rooms extends Component {
 
   state = {
@@ -15,40 +15,56 @@ class Rooms extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/rooms").then((rooms) => {
-      this.setState({
-        rooms: rooms.data,
-      })
+    apiClient
+      .roomsAll().then((rooms) => {
+        this.setState({
+          rooms: rooms.data,
+        })
 
-    })
+      })
 
   }
 
 
   render() {
     const { rooms } = this.state
-    const Floor1 = rooms.map(function (elem, index) {
+    let estado = "no"
+    const Floor1 = rooms.filter(room => room.roomFloor === "Floor 01").map(function (elem, index) {
       // return  elem.launches+10;
+      if (elem.state === "Empty") {
+        estado = "verde"
+      }
       return (
         <div key={index}>
           <Link to={"/rooms/" + elem._id}>
-            <MainCards title={elem.roomName} size="64" img="cil:bed" bot="Check for rooms" />
-
+            <MainCards color={estado} title={elem.roomName} size="64" img="cil:bed" bot="Check for rooms" />
           </Link>
         </div>
+      );
+    }); const Floor2 = rooms.filter(room => room.roomFloor === "Floor 02").map(function (elem, index) {
+      // return  elem.launches+10;
 
+      if (elem.state === "Empty") {
+        estado = "verde"
+      }
+      return (
+        < div key={index} >
+          <Link to={"/rooms/" + elem._id}>
+            <MainCards color={estado} title={elem.roomName} size="64" img="cil:bed" bot="Check for rooms" />
+          </Link>
+        </div >
       );
     });
     return (
 
-      < div >
+      <div >
 
         <Sidebar />
         <div className="main">
           <CardL title="Rooms settings" />
 
           <Link to="/rooms/add">
-            <CardM title={"Add room"} />
+            <CardM title={"Manage rooms"} />
           </Link>
           {/*Cargo botones habicatciones */}
           <CardL title="First Floor" />
@@ -60,6 +76,7 @@ class Rooms extends Component {
           </div>
           <CardL title="Second  Floor" />
           <div className="button-container">
+            {Floor2}
 
           </div>
         </div>

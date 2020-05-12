@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CardL from "../components/cards/CardL";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
-
+import apiClient from "../services/loginService";
 class RoomId extends Component {
 
   state = {
@@ -11,8 +11,8 @@ class RoomId extends Component {
   }
 
   componentDidMount() {
-    let id = this.props.match.params.id
-    axios.get("http://localhost:3000/rooms/" + id).then((room) => {
+    let id = this.props.match.params.id;
+    apiClient.oneRoom(id).then((room) => {
       this.setState({
         room: room.data,
       })

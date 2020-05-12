@@ -2,13 +2,24 @@ import React, { Component } from "react";
 
 class MainCards extends Component {
   render() {
-    return (
-      <div className="main-cards">
+    let col;
+    if (this.props.color === "verde") {
 
-        <div className="main-cards-text ">
+      col = "main-cards green"
+    } else {
+      col = "main-cards red"
+
+    }
+    return (
+
+
+      // <div className="main-cards">
+      < div className={col} >
+
+        <div className="main-cards-text">
           <span>{this.props.title}</span>
         </div>
-        <div className="main-cards-text">
+        {/* <div className="main-cards-text">
           <span
             className="iconify"
             data-icon={this.props.img}
@@ -19,9 +30,9 @@ class MainCards extends Component {
         </div>
         <div className="main-cards-bot">
           <span>{this.props.bot}</span>
-        </div>
+        </div> */}
 
-      </div>
+      </div >
     );
   }
 }

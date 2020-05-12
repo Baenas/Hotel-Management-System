@@ -28,7 +28,7 @@
   padding: 10px;
 }
 .card-container-content {
-  font-size: 150%;
+  font-size: 100%;
   background-color: #7aa250ef;
   font-weight: 300;
 }
@@ -57,15 +57,27 @@
   background-color: rgb(196, 131, 11);
 }
 .main-cards {
-  min-height: 90px;
+  min-height: 30px;
   margin: 20px;
   background-color: orange;
   color: white;
   font-weight: 400;
-  font-size: xx-large;
+  font-size: large;
   display: flex;
   align-items: flex-end;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
     "Helvetica Neue", sans-serif;
     padding: 15px;
+    
+}
+
+.orange{
+  background-color: orange;
+}
+.blue{
+  background-color: rgb(22, 110, 151);
+}
+
+.green{
+  background-color: lightgreen;
 }

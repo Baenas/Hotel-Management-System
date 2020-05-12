@@ -50,9 +50,14 @@ border: none;
 .container-forms{
   border: solid rgba(105, 105, 105, 0.301) 1px;
   padding: 10px;
-overflow-y: scroll;
+overflow-y: auto;
   display: flex;
   flex-direction: column;
+}
+.overflow{
+overflow-y: auto;
+height: 70%;
+
 
 }
 @media only screen and (max-width: 600px) {
