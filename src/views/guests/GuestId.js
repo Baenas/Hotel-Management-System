@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import CardL from "../../components/cards/CardL";
 import Sidebar from "../../components/Sidebar";
-import axios from "axios";
-import Operations from '../operations/RoomOperations'
+import { Redirect } from 'react-router-dom'
+
+import apiClient from "../../services/loginService";
 class GuestId extends Component {
 
 
@@ -16,13 +17,13 @@ class GuestId extends Component {
     guestPhone: "",
     guestCountry: "",
     guestCity: "",
-    id: ""
+    id: "",
+    redirect: null,
 
   }
   componentDidMount() {
     const { id } = this.props.location.state
-
-    axios.get("http://localhost:3000/guest/" + id).then((room) => {
+    apiClient.oneGuest(id).then((room) => {
       this.setState({
         guest: room.data,
         guestName: room.data.guestName,
@@ -50,14 +51,14 @@ class GuestId extends Component {
   handleEdit = (e) => {
     e.preventDefault();
     const { guestName, guestFullName, guestIdCard, guestAge, guestEmail, guestPhone, guestCountry, guestCity } = this.state
-    axios.put('http://localhost:3000/guest/' + this.state.guest._id, {
-      guestName, guestFullName, guestIdCard, guestAge, guestEmail, guestPhone, guestCountry, guestCity,
-    }).then(() => {
-
-      this.props.history.push('/guest');
+    apiClient.updateGuest(this.state.guest._id, { guestName, guestFullName, guestIdCard, guestAge, guestEmail, guestPhone, guestCountry, guestCity }).then(() => {
+      this.setState({ redirect: "/home" })
     })
   }
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
     const { guest } = this.state
     return (
       <div>

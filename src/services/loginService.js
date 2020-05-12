@@ -16,6 +16,13 @@ class ApiClient {
   oneGuest(id) {
     return this.apiClient.get(`/guest/${id}`);
   }
+  oneMoreGuest(body) {
+    return this.apiClient.post("/guest", body);
+  }
+  updateGuest(id, body) {
+    return this.apiClient.put(`/guest/${id}`, body);
+  }
+
   roomsAll() {
     return this.apiClient.get(`/rooms`);
   }

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CardL from "../../components/cards/CardL";
 import apiClient from "../../services/loginService";
+import { Redirect } from 'react-router-dom'
 class FindRoom extends Component {
     state = {
         rooms: [],
         findType: "Double",
-        selected: ""
+        selected: "",
+        redirect: null,
     }
 
 
@@ -49,7 +51,9 @@ class FindRoom extends Component {
 
     }
     render() {
-
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
 
         return (
             <div className="container-forms " >

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Sidebar from "../../components/Sidebar";
 import CardL from "../../components/cards/CardL";
-import axios from "axios";
+import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
+import apiClient from "../../services/loginService";
 class AddGuest extends Component {
 
     state = {
@@ -15,28 +16,27 @@ class AddGuest extends Component {
         guestPhone: "",
         guestCountry: "",
         guestCity: "",
-        alert: ""
+        alert: "",
+        redirect: null,
 
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        const { history } = this.props
+
         const { guestName, guestFullName, guestIdCard, guestAge, guestEmail, guestPhone, guestCountry, guestCity } = this.state
-        if (guestName && guestFullName && guestIdCard && guestAge && guestEmail && guestPhone && guestCountry && guestCity) {
-            axios.post('http://localhost:3000/guest', {
 
-                guestName, guestFullName, guestIdCard, guestAge, guestEmail, guestPhone, guestCountry, guestCity
-            }).then(() => {
-
-                history.push('/guest')
+        apiClient.oneMoreGuest({ guestName, guestFullName, guestIdCard, guestAge, guestEmail, guestPhone, guestCountry, guestCity })
+            .then(() => {
+                this.setState({ redirect: "/home" })
+            }).catch(() => {
+                this.setState({
+                    alert: "Empty field"
+                })
 
             })
-        } else {
-            history.push('/guest')
-            this.setState({
-                alert: "Empty field"
-            })
-        }
+
+
+
 
 
 
@@ -50,6 +50,9 @@ class AddGuest extends Component {
         })
     }
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div>
                 <Sidebar />
