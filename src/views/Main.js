@@ -24,6 +24,30 @@ class Main extends Component {
         <MainCards title="Checkout" size="64" img="bx-bxs-archive-out" bot="Do a checkout" /> */}
 
 
+
+            <div className="content-col">
+              <div className="content-main-forms">
+                <div className="content-main-forms-title">
+                  Guest Finder
+                </div>
+                <div className="content-main-forms-search">
+                  <input placeholder="Search..." type="text"></input>
+                  <span className="iconify span-icon-search" data-icon="mdi:account-search-outline" data-inline="false" data-width="24" data-height="24"></span>
+                </div>
+              </div>
+
+
+              <div className="content-main-forms-data">
+                <div className="form-data-name">
+                  Name:   <span className="form-data-name-small">Daniel Baenas Gomez</span>
+                </div>
+                <div className="form-data-id">
+                  IdCard:   <span className="form-data-name-small">3283XXXXX</span>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ a {
 }
 .dashboard-container{
   display: flex;
+  
 }
 .login-box{
 
@@ -53,13 +54,12 @@ border: none;
 overflow-y: auto;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .overflow{
 overflow-y: auto;
-height: 70%;
-
-
 }
+
 @media only screen and (max-width: 600px) {
 .dashboard-container{
   display: flex;

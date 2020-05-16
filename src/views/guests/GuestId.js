@@ -22,7 +22,7 @@ class GuestId extends Component {
 
   }
   componentDidMount() {
-    const { id } = this.props.location.state
+    const { id } = this.props.match.params
     apiClient.oneGuest(id).then((room) => {
       this.setState({
         guest: room.data,

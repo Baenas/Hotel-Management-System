@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import MainCards from "../components/cards/MainCards";
-import axios from "axios";
 import apiClient from "../services/loginService";
 class Rooms extends Component {
 
@@ -29,7 +28,7 @@ class Rooms extends Component {
   render() {
     const { rooms } = this.state
     let estado = "no"
-    const Floor1 = rooms.filter(room => room.roomFloor === "Floor 01").map(function (elem, index) {
+    const Floor1 = rooms.filter(room => room.roomFloor === "01").map(function (elem, index) {
       // return  elem.launches+10;
       if (elem.state === "Empty") {
         estado = "verde"
@@ -41,7 +40,7 @@ class Rooms extends Component {
           </Link>
         </div>
       );
-    }); const Floor2 = rooms.filter(room => room.roomFloor === "Floor 02").map(function (elem, index) {
+    }); const Floor2 = rooms.filter(room => room.roomFloor === "02").map(function (elem, index) {
       // return  elem.launches+10;
 
       if (elem.state === "Empty") {

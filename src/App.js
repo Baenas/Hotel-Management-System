@@ -10,6 +10,9 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import Roomoperations from './views/operations/RoomOperations'
 import Checking from './views/operations/Checking'
+import Checkout from './views/operations/Checkout'
+import RoomStatus from './views/operations/ManageRoomState'
+import GuestOperations from './views/operations/GuestOperations'
 
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 function App() {
@@ -28,10 +31,9 @@ function App() {
           <PrivateRoute component={GuestId} path="/guest/:id" exact />
           <PrivateRoute component={Roomoperations} path="/roomoperations/" exact />
           <PrivateRoute component={Checking} path="/checking/" exact />
-
-
-
-
+          <PrivateRoute component={Checkout} path="/checkout/:id" exact />
+          <PrivateRoute component={RoomStatus} path="/manageroom" exact />
+          <PrivateRoute component={GuestOperations} path="/manageroom/:id" exact />
         </Switch>
       </Router>
     </div>

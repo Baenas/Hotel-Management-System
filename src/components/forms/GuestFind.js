@@ -30,27 +30,29 @@ class guestFind extends Component {
         const Guest = find.filter(function (guest) {
             return guest.guestFullName.toLowerCase().indexOf(val.toLowerCase()) > -1
         })
-            .map(function (elem, index) {
+            .slice(0, 5).map(function (elem, index) {
                 // return  elem.launches+10;
                 return (
-                    < tr key={index} >
-                        <td className="input-text-form">
-
-                            <Link to={{
-                                pathname: "/guest/" + elem._id,
-                                state: {
-                                    id: elem._id
-                                }
-                            }}>
-                                {elem.guestFullName}
-                                < br />
-                                {elem.guestIdCard} - {elem.guestCountry}
-
-                            </Link>
 
 
-                        </td>
-                    </tr>
+
+                    <div key={index} >
+                        <Link to={{
+                            pathname: "/guest/" + elem._id,
+                            state: {
+                                id: elem._id
+                            }
+                        }}>
+                            <div className="form-data-name">
+                                Name:   <span className="form-data-name-small">{elem.guestFullName}</span>
+                            </div>
+                            <div className="form-data-id">
+                                IdCard:   <span className="form-data-name-small">{elem.guestIdCard}</span>
+                            </div>
+                        </Link>
+                    </div>
+
+
                 );
             });
 
@@ -59,26 +61,26 @@ class guestFind extends Component {
 
                 <Sidebar />
 
-                <div className="container-forms overflow">
-                    <CardL title="Find  Guest" />
-
-                    <table>
-                        <thead>
-
-                            <tr>
-                                <td className="input-text-form"><b> <input className="input-list-form" name="val" onChange={this.handleSearch} type="text" /></b></td>
-                            </tr>
-
-                        </thead>
-                        <tbody>
 
 
-                            {Guest}
+                <div className="content-col">
+                    <div className="content-main-forms">
+                        <div className="content-main-forms-title">
+                            Guest Finder
+                      </div>
+                        <div className="content-main-forms-search">
+                            <input placeholder="Search..." name="val" onChange={this.handleSearch} type="text"></input>
+                            <span className="iconify span-icon-search" data-icon="mdi:account-search-outline" data-inline="false" data-width="24" data-height="24"></span>
+                        </div>
+                    </div>
 
-                        </tbody>
-                    </table>
+
+                    <div className="content-main-forms-data">
+                        {Guest}
+
+
+                    </div>
                 </div>
-
 
             </div>
         );

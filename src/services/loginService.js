@@ -36,7 +36,18 @@ class ApiClient {
   updateRoom(id, body) {
     return this.apiClient.put(`/rooms/${id}`, body);
   }
-
+  updateRoomInd(id, body) {
+    return this.apiClient.patch(`/rooms/${id}`, body);
+  }
+  checking(body) {
+    return this.apiClient.post('/checking', body);
+  }
+  getChecking(id) {
+    return this.apiClient.get(`/checking/${id}`);
+  }
+  allChecking() {
+    return this.apiClient.get(`/checking`);
+  }
 
 
 

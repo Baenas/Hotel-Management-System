@@ -73,7 +73,7 @@ class AddRoom extends Component {
 
                         <CardL title="Add Room" />
                         <label className="" ><b>Number</b></label>
-                        <input onChange={this.handleChange} name="roomName" className="input-text-form" placeholder="Room Number" type="text" />
+                        <input onChange={this.handleChange} name="roomName" className="input-text-form" defaultValue="" placeholder="Room Number" type="text" />
                         <label className="" ><b>Type</b></label>
 
                         <select name="roomType" onChange={this.handleChange} className="input-text-form" >
@@ -82,7 +82,7 @@ class AddRoom extends Component {
                         </select>
 
                         <label className="" ><b>Floor</b></label>
-                        <input onChange={this.handleChange} className="input-text-form" name="roomFloor" placeholder="Room Floor" type="text" />
+                        <input onChange={this.handleChange} className="input-text-form" name="roomFloor" defaultValue="" placeholder="Room Floor" type="text" />
                         <label className="" ><b>Wifi</b></label>
                         <input onChange={this.handleChange} className="input-text-form" name="roomWifi" placeholder="Room Wifi" type="text" />
                         <label className="" ><b>Phone</b></label>

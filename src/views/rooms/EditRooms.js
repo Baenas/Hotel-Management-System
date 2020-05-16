@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import CardL from "../../components/cards/CardL";
-import axios from "axios";
 import apiClient from "../../services/loginService";
 import { Redirect } from 'react-router-dom'
 class EditRoom extends Component {
@@ -85,7 +84,7 @@ class EditRoom extends Component {
     }
 
     render() {
-        const { rooms, roomWifi } = this.state
+        const { rooms } = this.state
 
         const List = rooms.map(function (elem, index) {
             // return  elem.launches+10;
@@ -109,6 +108,8 @@ class EditRoom extends Component {
                     <CardL title="Get room" />
 
                     <select onChange={this.handleFill} name="roomName" className="input-text-form" >
+
+                        <option  ></option>
 
                         {List}
 

@@ -28,3 +28,29 @@ background-color:lightcoral;
 .button-green{
 background-color:lightgreen;
 }
+.button-fix, .button-fix-white{
+  font-weight: bold;
+  padding: 5px;
+  border: none;
+  box-shadow: black 2px 1px 1px;
+ border: solid gray 1px;
+  
+  background-color: rgb(131, 185, 117);
+}
+.button-fix-white{
+background-color: rgb(140, 182, 130);
+
+}
+.table-item, .table-item-red{
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  box-shadow: black 2px 1px 1px;
+  padding: 5px;
+  background-color: rgba(52, 94, 41, 0.421);
+}
+.table-item-red{
+    background-color: rgba(156, 66, 53, 0.942);
+    font-weight: lighter;
+    color: white;
+}

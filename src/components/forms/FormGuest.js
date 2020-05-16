@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CardL from "../../components/cards/CardL";
-import axios from "axios";
+
 import apiClient from '../../services/loginService';
 
 class FormGuest extends Component {
@@ -15,7 +15,7 @@ class FormGuest extends Component {
         guestPhone: "",
         guestCountry: "",
         guestCity: "",
-        id: ""
+        id: ''
 
     }
     componentDidMount() {
@@ -43,7 +43,7 @@ class FormGuest extends Component {
     render() {
         const { guest } = this.state
         return (
-            <div className="container-forms ">
+            <div className="dashboard-container container-forms ">
                 <CardL title="Guest Info" />
 
                 <label className="" ><b>Name</b></label>
