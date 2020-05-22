@@ -69,9 +69,10 @@ class AddRoom extends Component {
             <div>
                 <Sidebar />
                 <form onSubmit={this.handleSubmit}>
-                    <div className="container-forms">
-
-                        <CardL title="Add Room" />
+                    <div className="content-main-forms">
+                        <div className="content-main-forms-title">
+                            Add Room
+                         </div>
                         <label className="" ><b>Number</b></label>
                         <input onChange={this.handleChange} name="roomName" className="input-text-form" defaultValue="" placeholder="Room Number" type="text" />
                         <label className="" ><b>Type</b></label>
@@ -93,8 +94,9 @@ class AddRoom extends Component {
                         <input className="input-text-form" onClick={this.calculatePrice} name="roomPrice" defaultValue={this.state.state} placeholder="Price" type="text" />
                     </div>
                     {this.state.error}
-                    <div className="container-forms">
-                        <input value="Add" type="submit" />
+                    <div className="content-main-forms">
+                        <input className="round-bottom " value="Add" type="submit" />
+                        {this.state.alert}
                     </div>
                 </form>
             </div>

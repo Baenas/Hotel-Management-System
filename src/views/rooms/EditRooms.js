@@ -102,11 +102,11 @@ class EditRoom extends Component {
 
             <div>
 
-                <div className="container-forms">
+                <div className="content-main-forms">
 
-
-                    <CardL title="Get room" />
-
+                    <div className="content-main-forms-title">
+                        Update room
+                      </div>
                     <select onChange={this.handleFill} name="roomName" className="input-text-form" >
 
                         <option  ></option>
@@ -116,38 +116,41 @@ class EditRoom extends Component {
                     </select>
 
 
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="container-forms">
-
-                            <CardL title="Edit Room" />
-
-                            <label className="" ><b>Number</b></label>
-                            <input onChange={this.handleChange} name="roomName" className="input-text-form" defaultValue={this.state.roomName} placeholder="Room Number" type="text" />
-                            <label className="" ><b>Type</b></label>
-
-
-                            <select name="roomType" onChange={this.handleChange} className="input-text-form" >
-                                <option defaultValue={this.state.roomType} value={this.state.roomType} >{this.state.roomType}</option>
-                                <option value="Double" >Double</option>
-                                <option value="Single" >Single</option>
-                            </select>
-
-                            <label className="" ><b>Floor</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="roomFloor" defaultValue={this.state.roomFloor} placeholder="Room Floor" type="text" />
-                            <label className="" ><b>Wifi</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="roomWifi" defaultValue={this.state.roomWifi} placeholder="Room Wifi" type="text" />
-                            <label className="" ><b>Phone</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="roomPhone" defaultValue={this.state.roomPhone} placeholder="Room Phone" type="text" />
-                            <label className="" ><b>Price</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" onClick={this.calculatePrice} name="roomPrice" defaultValue={this.state.roomPrice} placeholder="Price" type="text" />
-                            <label className="" ><b>State</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="state" defaultValue={this.state.state} placeholder="State" type="text" />
-
-                            <input value="Add" type="submit" />
-                        </div>
-                        {this.state.error}
-                    </form>
                 </div >
+                <form onSubmit={this.handleSubmit}>
+                    <div className="content-main-forms">
+
+
+
+
+                        <label className="" ><b>Number</b></label>
+                        <input onChange={this.handleChange} name="roomName" className="input-text-form" defaultValue={this.state.roomName} placeholder="Room Number" type="text" />
+                        <label className="" ><b>Type</b></label>
+
+
+                        <select name="roomType" onChange={this.handleChange} className="input-text-form" >
+                            <option defaultValue={this.state.roomType} value={this.state.roomType} >{this.state.roomType}</option>
+                            <option value="Double" >Double</option>
+                            <option value="Single" >Single</option>
+                        </select>
+
+                        <label className="" ><b>Floor</b></label>
+                        <input onChange={this.handleChange} className="input-text-form" name="roomFloor" defaultValue={this.state.roomFloor} placeholder="Room Floor" type="text" />
+                        <label className="" ><b>Wifi</b></label>
+                        <input onChange={this.handleChange} className="input-text-form" name="roomWifi" defaultValue={this.state.roomWifi} placeholder="Room Wifi" type="text" />
+                        <label className="" ><b>Phone</b></label>
+                        <input onChange={this.handleChange} className="input-text-form" name="roomPhone" defaultValue={this.state.roomPhone} placeholder="Room Phone" type="text" />
+                        <label className="" ><b>Price</b></label>
+                        <input onChange={this.handleChange} className="input-text-form" onClick={this.calculatePrice} name="roomPrice" defaultValue={this.state.roomPrice} placeholder="Price" type="text" />
+                        <label className="" ><b>State</b></label>
+                        <input onChange={this.handleChange} className="input-text-form" name="state" defaultValue={this.state.state} placeholder="State" type="text" />
+
+                    </div>
+                    <div className="content-main-forms">
+                        <input value="Update" type="submit" />
+                    </div >
+                    {this.state.error}
+                </form>
             </div >
 
         )

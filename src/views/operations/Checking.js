@@ -12,6 +12,9 @@ class Checking extends Component {
         rooms: [],
         findType: "Double",
         selected: "",
+        extraName: "",
+        extraAge: ""
+
 
     }
 
@@ -72,20 +75,45 @@ class Checking extends Component {
         }
 
     }
+    handleChange = (e) => {
+        this.setState({
 
+            [e.target.name]: e.target.value
+
+        })
+    }
+    extraGuest = () => {
+        let { findType } = this.state
+
+        if (findType == "Double") {
+
+            return (
+
+                <div className="content-main-forms" >
+                    <div className="content-main-forms-title">
+                        Extra guest
+              </div>
+                    <label className="" ><b>Name</b></label>
+                    <input onChange={this.handleChange} className="input-text-form" name="extraName" placeholder="Guest name" type="text" />
+                    <label className="" ><b>Age</b></label>
+                    <input onChange={this.handleChange} name="extraAge" className="input-text-form" placeholder="Age" type="text" />
+                </div >
+            )
+        }
+
+    }
 
 
     render() {
-        const { guestID, roomID } = this.state
+        const { guestID, roomID, extraName, extraAge } = this.state
         return (
             <div className="main dashboard-container" >
                 <Sidebar />
                 <FormGuest />
                 <FindRoom saved1={this.saved} data={this.state.selected} showType={this.state.findType} type={this.getType} filter={this.getRoom} />
-                <CheckingData guest={guestID} room={roomID} data={this.state.selected} />
+                <CheckingData guest={guestID} extraName={extraName} extraAge={extraAge} room={roomID} data={this.state.selected} />
 
-
-
+                {this.extraGuest()}
             </div >
         )
     }

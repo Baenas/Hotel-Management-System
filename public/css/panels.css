@@ -13,41 +13,56 @@
   text-shadow: rgb(0, 0, 0) 2px 1px 2px;
 }
 .content-main-forms-title{
-
-  padding: 10px;
-  font-weight: 600;
-  color: rgba(102, 102, 102, 0.431);
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  padding: 5px;
+  text-align: center;
+  color: #cf26266e;
   font-size: 22px;
   box-shadow: 1px  1px rgba(102, 102, 102, 0.431);
-  text-shadow: 1px 1px rgb(128, 128, 128);
   width: 280px;
-  background-color:rgb(195, 195, 195);
+  background-color:rgba(117, 117, 117, 0.418);
+  font-weight: lighter;
   
 }
+.round-bottom{
+   border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 
+}
 .content-col{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .content-main-forms, .content-main-forms-data{
   margin-top: 20px;
   border: 1px solid rgba(95, 95, 95, 0.623);
   font-family: 'Balsamiq Sans', cursive;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 300px;
   padding: 10px;
-  box-shadow: rgba(54, 54, 54, 0.37) 3px 3px 6px;;
-  background-color:rgba(126, 122, 122, 0.534)
+  box-shadow: rgba(54, 54, 54, 0.37) 3px 3px 6px;
+  background-color:rgba(211, 211, 211, 0.534);
   
 }
+.content-main-forms-big{
+display: inline; 
+border: solid gray 1px;
+}
+
 .content-main-forms{
+  margin:20px;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
-
+  height: fit-content;
 }
 .content-main-forms-data{
+   margin:20px;
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
 display: flex;
@@ -59,19 +74,21 @@ align-items:flex-start;
  width:100%;
  display: flex;
  flex-direction: row;
- align-items: center; ;
+ align-items: center; 
  justify-content: center;
+ margin:20px
 }
-.content-main-forms-search input{
+.content-main-forms-search, input{
   width:80%;
   border-bottom-left-radius: 20px;
   height: 35px;
   border: none;
   margin-right: 15px;
   box-shadow: rgba(179, 179, 179, 0.623) 2px 2px 2px;
-  font-size:25px;
-  font-weight: lighter;
+  font-weight: 300;
   padding-left: 20px;
+  padding: 5px;
+  font-size:25px;
 }
 .span-icon-search {
 background-color: antiquewhite;
@@ -79,10 +96,12 @@ padding: 10px;
 }
 
 
+.form-data-name:hover, .form-data-id:hover, .form-data-name-small:hover  { 
+color: rgb(0, 0, 0);
+}
 .form-data-name{
   padding: 2px;
   border-bottom: 1px solid rgba(163, 163, 163, 0.623);
-  
 }
 .form-data-id{
   padding: 2px;
@@ -91,6 +110,12 @@ padding: 10px;
   
 }
 .form-data-name-small{
-  color: rgb(77, 77, 77);
+  color: rgb(104, 104, 104);
   font-size: 120%;
+}
+
+
+.row{
+  display:flex;
+  flex-direction: row;
 }

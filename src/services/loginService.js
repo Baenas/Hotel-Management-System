@@ -48,7 +48,15 @@ class ApiClient {
   allChecking() {
     return this.apiClient.get(`/checking`);
   }
-
+  chekingPush(id, body) {
+    return this.apiClient.patch(`/checking/array/${id}`, body);
+  }
+  chekingAddOne(id, body) {
+    return this.apiClient.patch(`/checking/value/${id}`, body);
+  }
+  extras() {
+    return this.apiClient.get('extra')
+  }
 
 
 }

@@ -68,8 +68,10 @@ class GuestId extends Component {
           <Sidebar />
 
           <form onSubmit={this.handleEdit}>
-            <div className="container-forms ">
-              <CardL title="Guest Info" />
+            <div className="content-main-forms ">
+              <div className="content-main-forms-title">
+                Guest Info
+              </div>
 
               <label className="" ><b>Name</b></label>
 
@@ -90,10 +92,12 @@ class GuestId extends Component {
               <label className="" ><b>Guest City</b></label>
               <input onChange={this.handleChange} className="input-text-form" name="guestCity" defaultValue={guest.guestCity} placeholder="Guest City" type="text" />
 
-              <input value="Update" type="submit" />
-              {this.state.alert}
 
             </div>
+            <div className="content-main-forms">
+              <input value="Update" type="submit" />
+            </div >
+            {this.state.alert}
           </form>
 
 

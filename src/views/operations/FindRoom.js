@@ -13,13 +13,12 @@ class FindRoom extends Component {
         }
 
         return (
-            <div className="dashboard-container" >
-                <div className="container-forms   overflow" >
-                    <CardL title="Rooms" />
+            <div className="content-main-forms" >
+                <div className="content-col" >
 
-                    <button onClick={this.props.type} className="button-fix">{this.props.showType} </button>
-                    <button onClick={this.props.filter} className="button-fix">New room</button>
-                    <button onClick={this.props.saved1} className="button-fix">Saved 1</button>
+                    <button onClick={this.props.type} className="button-small">{this.props.showType} </button>
+                    <button onClick={this.props.filter} className="button-small">New room</button>
+                    <button onClick={this.props.saved1} className="button-small">Saved 1</button>
 
 
 

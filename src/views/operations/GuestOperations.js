@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import CardL from "../../components/cards/CardL";
 import apiClient from "../../services/loginService";
 import { withRouter, Link } from 'react-router-dom';
+import RoomId from '../RoomId'
 class GuestOperation extends Component {
     state = {
         id: '',
         data: [],
         guest: [],
-        room: []
+        room: [],
+
     }
 
     componentDidMount() {
@@ -41,9 +43,10 @@ class GuestOperation extends Component {
                     <tbody>
 
                         <tr>
-                            <th className="table-item-red" >  {room.roomName}</th>
-                            <th className="table-item" ><Link to={'/rooms/' + room._id}>  Guest Room</Link></th>
-                            <th className="table-item-red" ><Link to={'/guest/' + guest._id}> Guest Info</Link></th>
+                            <th className="button-small" >  {room.roomName}</th>
+                            <th className="button-small" ><Link to={'/rooms/' + room._id}>  Guest Room</Link></th>
+                            <th className="button-small" ><Link to={'/guest/' + guest._id}> Guest Info</Link></th>
+
                         </tr>
                     </tbody>
                 </table>
@@ -51,6 +54,8 @@ class GuestOperation extends Component {
                     <tbody>
 
                         <tr>
+                            <th className="button-small" >  Key : {data.dashkey} </th>
+
                             <th className="table-item" ><Link to={'/checkout/' + localStorage.getItem('idoperations')}> Checkout</Link></th>
                         </tr>
                     </tbody>

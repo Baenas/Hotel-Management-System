@@ -7,7 +7,11 @@ class RoomId extends Component {
   state = {
     room: {},
     user: "",
-    checking: {}
+    checkin: {
+      name: "",
+      age: "",
+    },
+
 
   }
 
@@ -17,10 +21,24 @@ class RoomId extends Component {
       this.setState({
         room: room.data,
         user: room.data.guestID
+      }).then(() => {
+
+
       })
     }).catch(() => {
 
     })
+
+    if (localStorage.getItem('idoperations')) {
+      apiClient.getChecking(localStorage.getItem('idoperations')).then((chekingData) => {
+        this.setState({
+          checkin: {
+            name: chekingData.data.extraguest[0].name,
+            age: chekingData.data.extraguest[0].age,
+          }
+        })
+      })
+    }
 
   }
 
@@ -38,32 +56,50 @@ class RoomId extends Component {
   }
 
   displayguest() {
-    const { user } = this.state
+    const { user, checkin } = this.state
     if (user) {
       return (
-        <div>
+        <div className="content-main">
+          <div className="content-main-forms">
 
-          <CardL title="Guest Info" />
-          <input className="input-text-form" defaultValue={user.guestName} placeholder="Guest ID" type="text" />
 
-          <input className="input-text-form" defaultValue={user.guestFullName} placeholder="Guest Full name" type="text" />
-        </div>
+            <div className="content-main-forms-title">
+              Guest Info
+          </div>
+            <label className="" ><b>Full Name</b></label>
+            <input className="input-text-form" defaultValue={user.guestFullName} placeholder="Guest ID" type="text" />
+            <label className="" ><a href={"/guest/" + user._id}>Visit Guest</a></label>
 
+          </div>
+
+
+
+          <div className="content-main-forms">
+            <div className="content-main-forms-title">
+              Extra guest
+          </div>
+            <label className="" ><b>Name</b></label>
+            <input className="input-text-form" disabled placeholder="Guest name" defaultValue={checkin.name} type="text" />
+            <label className="" ><b>Age</b></label>
+            <input className="input-text-form" disabled placeholder="Age" type="text" defaultValue={checkin.age} />
+
+          </div>
+        </div >
       )
     }
   }
 
   render() {
     const { room } = this.state
-
     return (
       <div className="main dashboard-container">
         <Sidebar />
+        {this.displayguest()}
+        <div className="content-main-forms">
 
-        <div className="container-forms">
-          {this.displayguest()}
-
-          <CardL title="Room Info" />
+          <div className="content-main-forms-title">
+            ROOM
+          </div>
           <label className="" ><b>Number</b></label>
           <input className="input-text-form" disabled placeholder="Room Number" type="text" defaultValue={room.roomName} />
           <label className="" ><b>Type</b></label>
@@ -75,36 +111,20 @@ class RoomId extends Component {
           <label className="" ><b>Phone</b></label>
           <input className="input-text-form" disabled placeholder="Room Phone" type="text" defaultValue={room.roomPhone} />
           {this.state.room.state === "Empty" ? <button onClick={this.handeToChecking} className="button-fix"> SET TO Checking</button> : <div></div>}
-
         </div>
-        <div className="container-forms">
-          <CardL title="Extra Guest" />
-          <input className="input-text-form" placeholder="Name" type="text" />
-          <input className="input-text-form" placeholder="Name" type="text" />
-          <input className="input-text-form" placeholder="Name" type="text" />
-          <input className="input-text-form" placeholder="Name" type="text" />
 
 
-        </div>
-        <div className="container-forms">
-          <CardL title="Remain breakfast" />
 
-          <input className="input-text-form" placeholder="0" type="text" />
-          <CardL title="Latest Breakfast" />
+        <div className="dashboard-container">
 
-          <input className="input-text-form" placeholder="7/05/2020" type="text" />
-          <input className="input-text-form" placeholder="6/05/2020" type="text" />
-          <input className="input-text-form" placeholder="5/05/2020" type="text" />
-
-
-        </div>
-        <div className="container-forms">
-          <CardL title="Days Left" />
 
 
 
         </div>
-      </div >
+      </div>
+
+
+
     );
   }
 }

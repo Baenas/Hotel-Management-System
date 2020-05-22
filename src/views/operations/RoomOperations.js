@@ -22,6 +22,9 @@ class RoomOperations extends Component {
                     <Link to="/manageroom">
                         <MainCards color="verde" title="Manage" />
                     </Link>
+                    <Link to="/extras">
+                        <MainCards color="" title="Extra" />
+                    </Link>
                 </div>
             </div>
         )

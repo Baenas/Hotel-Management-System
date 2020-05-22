@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import CardL from "../../components/cards/CardL";
 import apiClient from '../../services/loginService';
 import { Redirect } from 'react-router-dom'
 
 class CheckingData extends Component {
     state = {
         nights: 1,
+        dashkey: 0,
         day_To: '',
         day_From: '',
         redirect: null,
@@ -16,6 +16,16 @@ class CheckingData extends Component {
         data: this.props.data
     }
 
+    makeid(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+
+    }
 
     handleChange = (e) => {
 
@@ -27,6 +37,7 @@ class CheckingData extends Component {
     handleChecking = (e) => {
         e.preventDefault();
 
+
         const { nights, day_From, day_To, guestID } = this.state
         const roomID = this.props.data._id
         /////checking
@@ -35,9 +46,15 @@ class CheckingData extends Component {
 
         ////habit
         let state = "active"
+        let dashkey = this.makeid(5)
+        let extraguest = {
+            name: this.props.extraName,
+            age: this.props.extraAge
+        }
 
-        apiClient.checking({ guestID, roomID, nights, day_From, day_To, estado }).then(() => {
-            apiClient.updateRoomInd(roomID, { state, guestID })
+        apiClient.checking({ guestID, roomID, nights, day_From, day_To, estado, extraguest, dashkey }).then(() => {
+            apiClient.updateRoomInd(roomID, { state, guestID }).then(() => {
+            })
         }).then(() => {
 
             this.setState({
@@ -51,13 +68,16 @@ class CheckingData extends Component {
         })
     }
     render() {
+
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
         }
         return (
             <div>
-                <div className="dashboard-container container-forms ">
-                    <CardL title="Info" />
+                <div className="content-main-forms ">
+                    <div className="content-main-forms-title">
+                        Info
+                      </div>
 
                     <label className="" ><b>Room Name</b></label>
                     <input onChange={this.handleChange} className="input-text-form" disabled defaultValue={this.props.data.roomName} name="roomName" placeholder="Room" type="text" />
@@ -65,9 +85,9 @@ class CheckingData extends Component {
                     <label className="" ><b>Nights</b></label>
                     <input onChange={this.handleChange} className="input-text-form" name="nights" defaultValue={this.state.nights} placeholder="Nights" type="number" />
                     <label className="" ><b>From</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" min='2020-01-01' defaultValue={this.state.day_From} value={this.state.day_From} name="day_From" placeholder="From" type="date" />
+                    <input onChange={this.handleChange} className="input-text-form" min='2020-01-01' value={this.state.day_From} name="day_From" placeholder="From" type="date" />
                     <label className="" ><b>To</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" defaultValue={this.state.day_To} value={this.state.day_To} name="day_To" placeholder="To" type="date" />
+                    <input onChange={this.handleChange} className="input-text-form" value={this.state.day_To} name="day_To" placeholder="To" type="date" />
                     <button onClick={this.handleChecking} className="button-fix">
                         Checking
                 </button>

@@ -7,3 +7,12 @@ export const isLogin = () => {
 
     return false;
 }
+export const isGuest = () => {
+    if (cookie.load('currentype')) {
+        return true;
+    }
+
+    return false;
+}
+
+
