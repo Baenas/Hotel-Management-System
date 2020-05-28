@@ -38,18 +38,18 @@ class Checkout extends Component {
         const { data } = this.state
         let fullPrice = data.roomID.roomPrice * data.nights
         console.log(data.extra)
-        const extras = data.extra.map(function (elem, index) {
-            return (
-                <div key={index}>
-                    <div className="form-data-name">
-                        Name:   <span className="form-data-name-small">{elem.name} {elem.description}</span>
-                    </div>
-                    <div className="form-data-id">
-                        Price:   <span className="form-data-name-small">{elem.price + "€"}</span>
-                    </div>
+        // const extras = data.extra.map(function (elem, index) {
+        //     return (
+        //         <div key={index}>
+        //             <div className="form-data-name">
+        //                 Name:   <span className="form-data-name-small">{elem.name} {elem.description}</span>
+        //             </div>
+        //             <div className="form-data-id">
+        //                 Price:   <span className="form-data-name-small">{elem.price + "€"}</span>
+        //             </div>
 
-                </div>)
-        });
+        //         </div>)
+        // });
         // const total = data.extra.reduce((accum, item) => accum + item.price, 0)
 
         console.log(data.extras)
@@ -105,8 +105,15 @@ class Checkout extends Component {
                                 Total price
                             </div>
                             <div className="form-body-data">
-                                <input onChange={this.handleChange} disabled className="inpu-text-form" value={fullPrice} name="price" placeholder="Full price" type="number" />
+                                <input disabled className="inpu-text-form" value={fullPrice} name="price" placeholder="Full price" type="number" />
 
+                            </div>
+                        </div>
+                        <div className="form-title">
+                            <div className="form-title-item">
+                                <button onClick={this.handleDo} className="button-small">
+                                    Checkout
+                                </button>
                             </div>
                         </div>
                     </div>
