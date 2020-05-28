@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 
 body {
   margin: 0px;
-  font-family: 'Balsamiq Sans', cursive;
 
 }
 a {
@@ -53,21 +51,16 @@ border: none;
   margin: 10px ;
     box-shadow: rgb(116, 116, 116) 2px 2px 2px;
 }
-.container-forms{
-  border: solid rgba(105, 105, 105, 0.301) 1px;
-  padding: 10px;
-overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.container-forms  {
+    border: solid rgba(105, 105, 105, 0.301) 1px;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
 }
-.overflow{
-overflow-y: auto;
-}
-
-@media only screen and (max-width: 600px) {
-.dashboard-container{
-  display: flex;
- flex-direction: column;
-  }
+.margin {
+margin: 10px;
 }

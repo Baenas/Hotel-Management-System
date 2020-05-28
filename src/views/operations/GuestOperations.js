@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
-import CardL from "../../components/cards/CardL";
 import apiClient from "../../services/loginService";
-import { withRouter, Link } from 'react-router-dom';
-import RoomId from '../RoomId'
+import { withRouter } from 'react-router-dom';
+import Checkout from '../../views/operations/Checkout'
+import RoomId from '../rooms/RoomId'
+import Extras from '../../views/operations/Extras'
+
 class GuestOperation extends Component {
     state = {
         id: '',
         data: [],
         guest: [],
         room: [],
+        show: '',
+
 
     }
+
+
 
     componentDidMount() {
         // let id = this.props.match.params.id
@@ -33,33 +39,56 @@ class GuestOperation extends Component {
     }
 
     render() {
+        const { data, room, show } = this.state
 
-        const { data, guest, room } = this.state
+        let showcomp = () => {
+
+            if (show === "room") {
+                return <RoomId data={data} />
+
+            } else if (show === "out") {
+
+                return <Checkout data={data} />
+            } else if (show === "extra") {
+                return <Extras data={data} />
+            }
+
+        }
+
+
 
         return (
             <div>
-                <CardL title="Guest Actions" />
+
+
                 <table className="container-forms" >
                     <tbody>
 
                         <tr>
                             <th className="button-small" >  {room.roomName}</th>
-                            <th className="button-small" ><Link to={'/rooms/' + room._id}>  Guest Room</Link></th>
-                            <th className="button-small" ><Link to={'/guest/' + guest._id}> Guest Info</Link></th>
+                            <th onClick={() => this.setState({ show: "room" })} className="button-small" >Room</th>
+                            <th onClick={() => this.setState({ show: "extra" })} className="button-small" >Extras</th>
+                            {/* <Link to={'/rooms/' + room._id}>  Guest Room</Link></th> */}
 
                         </tr>
+
                     </tbody>
                 </table>
                 <table className="container-forms" >
                     <tbody>
 
-                        <tr>
-                            <th className="button-small" >  Key : {data.dashkey} </th>
 
-                            <th className="table-item" ><Link to={'/checkout/' + localStorage.getItem('idoperations')}> Checkout</Link></th>
+                        <tr>
+                            <th className="button-small " >  Key : {data.dashkey} </th>
+
+                            <th onClick={() => this.setState({ show: "out" })} className="button-small" >Checkout</th>
+
                         </tr>
                     </tbody>
                 </table>
+                <div className="">
+                    {showcomp()}
+                </div>
             </div>
         )
     }

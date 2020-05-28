@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Logout from '../services/logout'
+import Logout from '../../services/logout'
+import './top-side-bars.css'
 class Sidebar extends Component {
   render() {
     return (
@@ -20,6 +21,11 @@ class Sidebar extends Component {
           <a className="sidenav-list-item" href="/roomoperations">
             <span className="iconify" data-icon="ion-bed" data-inline="false"></span>
             <span className="icon-text">Operations</span>
+          </a>
+
+          <a className="sidenav-list-item" href="/cal">
+            <span className="iconify" data-icon="ion-clock" data-inline="false"></span>
+            <span className="icon-text">Calendars</span>
           </a>
           <Logout />
         </div>

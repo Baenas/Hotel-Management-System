@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Sidebar from "../../components/Sidebar";
+import TopBar from "../../components/bars/Topbar";
 import FormGuest from '../../components/forms/FormGuest'
 import FindRoom from '../operations/FindRoom';
 import CheckingData from './CheckingData'
@@ -13,7 +13,10 @@ class Checking extends Component {
         findType: "Double",
         selected: "",
         extraName: "",
-        extraAge: ""
+        extraAge: "",
+        show: true,
+        show2: true,
+        show3: false,
 
 
     }
@@ -55,7 +58,9 @@ class Checking extends Component {
 
             this.setState({
                 selected: randomRoom,
-                roomID: randomRoom._id
+                roomID: randomRoom._id,
+                show3: true
+
             })
         }
 
@@ -85,7 +90,7 @@ class Checking extends Component {
     extraGuest = () => {
         let { findType } = this.state
 
-        if (findType == "Double") {
+        if (findType === "Double") {
 
             return (
 
@@ -103,18 +108,66 @@ class Checking extends Component {
 
     }
 
+    showMe2 = () => {
+        const { show2 } = this.state
 
+
+        show2 === true ? this.setState({ show2: false }) : this.setState({ show2: true })
+
+    }
+
+    showMe3 = () => {
+        const { show3 } = this.state
+
+
+        show3 === true ? this.setState({ show3: false }) : this.setState({ show3: true })
+
+    }
+    showMe = () => {
+        const { show } = this.state
+
+        show === true ? this.setState({ show: false }) : this.setState({ show: true })
+
+
+    }
     render() {
-        const { guestID, roomID, extraName, extraAge } = this.state
-        return (
-            <div className="main dashboard-container" >
-                <Sidebar />
-                <FormGuest />
-                <FindRoom saved1={this.saved} data={this.state.selected} showType={this.state.findType} type={this.getType} filter={this.getRoom} />
-                <CheckingData guest={guestID} extraName={extraName} extraAge={extraAge} room={roomID} data={this.state.selected} />
+        const { guestID, roomID, extraName, extraAge, show, show2, show3 } = this.state
 
-                {this.extraGuest()}
+
+
+        return (
+
+            <div className="" >
+                <TopBar />
+                {/* <button className="button-small" onClick={this.showMe}>
+                    Step: 1
+                </button>
+                <button className="button-small" onClick={this.showMe2}>
+                    Step: 2
+
+                </button>
+                <button className="button-small" onClick={this.showMe3}>
+                    Step: 3
+                </button> */}
+
+                <div className="main-side">
+                    {show === true ? <FormGuest /> : null}
+                    {show2 === true ? <FindRoom data={this.state.selected} showType={this.state.findType} type={this.getType} filter={this.getRoom} /> : null}
+                    {show3 === true ? <CheckingData guest={guestID} extraName={extraName} extraAge={extraAge} room={roomID} data={this.state.selected} /> : null}
+                </div>
+
+
+                {/* <FindRoom saved1={this.saved} data={this.state.selected} showType={this.state.findType} type={this.getType} filter={this.getRoom} />
+                    <CheckingData guest={guestID} extraName={extraName} extraAge={extraAge} room={roomID} data={this.state.selected} /> */}
+
+
+                {/* {this.extraGuest()} */}
             </div >
+
+
+
+
+
         )
     }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import CardL from "../../components/cards/CardL";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../components/bars/Sidebar";
 import { Redirect } from 'react-router-dom'
 
 import apiClient from "../../services/loginService";

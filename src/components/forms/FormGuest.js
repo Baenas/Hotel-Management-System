@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import CardL from "../../components/cards/CardL";
 
 import apiClient from '../../services/loginService';
 
@@ -7,71 +6,88 @@ class FormGuest extends Component {
 
     state = {
         guest: [],
-        guestName: "",
-        guestFullName: "",
-        guestIdCard: "",
-        guestAge: "",
-        guestEmail: "",
-        guestPhone: "",
-        guestCountry: "",
-        guestCity: "",
-        id: ''
+        id: '',
+        byroom: '',
+        byname: '',
+        byidcard: '',
+
+
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+
+        })
+
+
 
     }
     componentDidMount() {
-        const id = localStorage.getItem('id')
-        apiClient.oneGuest(id).then((room) => {
-            this.setState({
-                guest: room.data,
-                guestName: room.data.guestName,
-                guestFullName: room.data.guestFullName,
-                guestIdCard: room.data.guestIdCard,
-                guestAge: room.data.guestAge,
-                guestEmail: room.data.guestEmail,
-                guestPhone: room.data.guestPhone,
-                guestCountry: room.data.guestCountry,
-                guestCity: room.data.guestCity,
-                id: room.data._id
 
+        apiClient
+            .guestAll()
+            .then((guest) => {
+                this.setState({
+                    guest: guest.data,
+                })
             })
-
-            console.log(this.state.room)
-
-        })
     }
 
+    // active = () => {
+    //     const { byname, byidcard, guest } = this.state
+    //     let active = guest.filter(propery => propery.guestIdCard.toLowerCase().indexOf(byidcard.toLowerCase()) > -1 && propery.guestFullName.toLowerCase().indexOf(byname.toLowerCase()) > -1)
+    //         .slice(0, 8).map(function (elem, index) {
+    //             return (
+    //                 <div key={index} >
+    //                     <div className="guest-list">{elem.guestFullName}- {elem.guestIdCard} </div>
+
+    //                 </div >
+    //             )
+    //         })
+    //     return active
+    // }
     render() {
-        const { guest } = this.state
+        const { byname, guest, byidcard } = this.state
+
+        let active = guest.filter(propery => propery.guestIdCard.toLowerCase().indexOf(byidcard.toLowerCase()) > -1 && propery.guestFullName.toLowerCase().indexOf(byname.toLowerCase()) > -1)
+            .slice(0, 8).map(function (elem, index) {
+                return (
+                    <div key={index} >
+                        <div onClick={() => localStorage.setItem('guest', JSON.stringify(elem))} className="guest-list">{elem.guestFullName}- {elem.guestIdCard} </div>
+
+                    </div >
+                )
+            })
         return (
-            <div className="content-main-forms ">
-                <div className="content-main-forms-title">
-                    Guest Info
-                 </div>
 
 
-                <label className="" ><b>Name</b></label>
-
-                <input onChange={this.handleChange} className="input-text-form" name="guestName" defaultValue={guest.guestName} placeholder="Guest name" type="text" />
-                <label className="" ><b>Full Name</b></label>
-                <input onChange={this.handleChange} className="input-text-form" name="guestFullName" defaultValue={guest.guestFullName} placeholder="Guest Full name" type="text" />
-                <label className="" ><b>ID card</b></label>
-                <input onChange={this.handleChange} className="input-text-form" name="guestIdCard" defaultValue={guest.guestIdCard} placeholder="Guest Id card" type="text" />
-                <label className="" ><b>Guest Age</b></label>
-                <input onChange={this.handleChange} className="input-text-form" name="guestAge" defaultValue={guest.guestAge} placeholder="Guest Age" type="text" />
-                <label className="" ><b>Guest Email</b></label>
-                <input onChange={this.handleChange} className="input-text-form" name="guestEmail" defaultValue={guest.guestEmail} placeholder="Guest Email" type="text" />
-
-                <label className="" ><b>Guest Phone</b></label>
-                <input onChange={this.handleChange} className="input-text-form" name="guestPhone" defaultValue={guest.guestPhone} placeholder="Guest Phone" type="text" />
-                <label className="" ><b>Guest Country</b></label>
-                <input onChange={this.handleChange} className="input-text-form" name="guestCountry" defaultValue={guest.guestCountry} placeholder="Guest Country" type="text" />
-                <label className="" ><b>Guest City</b></label>
-                <input onChange={this.handleChange} className="input-text-form" name="guestCity" defaultValue={guest.guestCity} placeholder="Guest City" type="text" />
-
-                {this.state.alert}
 
 
-            </div >
+            <div className="form-main">
+
+                <div className="form-title">
+                    <div className="form-title-item">
+                        Get Guest
+                        </div>
+                </div>
+
+                <div className="form-body">
+                    <div className="form-body-item">
+
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} className="input-text-form" name="byname" placeholder="Guest name" type="text" />
+                            <input onChange={this.handleChange} className="input-text-form" name="byidcard" placeholder="Guest id card" type="text" />
+
+                        </div>
+                    </div>
+
+                    {active}
+                </div>
+
+            </div>
+
+
 
         )
     }

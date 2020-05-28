@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-import Sidebar from "../../components/Sidebar";
-import CardL from "../../components/cards/CardL";
+import Sidebar from "../bars/Sidebar";
 import apiClient from "../../services/loginService";
 class guestFind extends Component {
     state = {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CardL from "../../components/cards/CardL";
 import { Redirect } from 'react-router-dom'
 class FindRoom extends Component {
     state = {
@@ -13,18 +12,33 @@ class FindRoom extends Component {
         }
 
         return (
-            <div className="content-main-forms" >
-                <div className="content-col" >
 
-                    <button onClick={this.props.type} className="button-small">{this.props.showType} </button>
-                    <button onClick={this.props.filter} className="button-small">New room</button>
-                    <button onClick={this.props.saved1} className="button-small">Saved 1</button>
+            <div className="form-main">
 
+                <div className="form-title">
+                    <div className="form-title-item">
+                        Room
+                        </div>
+                </div>
 
+                <div className="form-body">
+                    <div className="form-body-item">
+
+                        <div className="form-body-data">
+                            <button onClick={this.props.type} className="button-small">{this.props.showType} </button>
+                            <button onClick={this.props.filter} className="button-small">New room</button>
+
+                        </div>
+                    </div>
 
 
                 </div>
-            </div >
+            </div>
+
+
+
+
+
         )
     }
 

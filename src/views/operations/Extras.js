@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Sidebar from "../../components/Sidebar";
 import apiClient from "../../services/loginService";
 class Extras extends Component {
     state = {
@@ -27,12 +26,20 @@ class Extras extends Component {
         console.log(extradata)
         return extradata
     }
+
+    showExtraType = () => {
+        const { extras } = this.state
+
+        var result = Array.from(new Set(extras));
+        return result
+
+    }
     render() {
+
         return (
 
 
             <div className="main dashboard-container">
-                <Sidebar />
                 <ul>
                     {this.showExtra()}
                 </ul>

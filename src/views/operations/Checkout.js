@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-import Sidebar from "../../components/Sidebar";
 import apiClient from "../../services/loginService";
 
 
 class Checkout extends Component {
     state = {
-        guestID: '',
-        roomID: '',
-        selected: '',
-        data: '',
-        extra: [],
+        data: this.props.data,
+
     }
     componentDidMount() {
         // let id = this.props.match.params.id
@@ -25,15 +21,11 @@ class Checkout extends Component {
         })
     }
     handleDo = () => {
-        const { guestID, roomID, data, extra } = this.state
+        const { data } = this.state
 
         /////checking
-        let estado = "old"
-        //id,id,night,to,from
 
-        ////habit
-        let state = "Empty"
-        apiClient.updateRoomInd(roomID._id, { state: "Empty", guestID: null }).then(() => {
+        apiClient.updateRoomInd(data.roomID._id, { state: "Empty", guestID: null }).then(() => {
 
             apiClient.chekingAddOne(data._id, { estado: "old" })
         })
@@ -43,10 +35,10 @@ class Checkout extends Component {
 
 
     render() {
-        const { guestID, roomID, data, extra } = this.state
-        let fullPrice = roomID.roomPrice * data.nights
-        console.log(extra)
-        const extras = extra.map(function (elem, index) {
+        const { data } = this.state
+        let fullPrice = data.roomID.roomPrice * data.nights
+        console.log(data.extra)
+        const extras = data.extra.map(function (elem, index) {
             return (
                 <div key={index}>
                     <div className="form-data-name">
@@ -58,68 +50,74 @@ class Checkout extends Component {
 
                 </div>)
         });
-        const total = extra.reduce((accum, item) => accum + item.price, 0)
+        // const total = data.extra.reduce((accum, item) => accum + item.price, 0)
 
-        console.log(extras)
+        console.log(data.extras)
         return (
-            <div className="main dashboard-container" >
-                <Sidebar />
-
-
-                <div className="content-main-forms ">
-                    <div className="content-main-forms-title">
-                        Info
-                 </div>
-                    <label className="" ><b>Name</b></label>
-
-                    <input onChange={this.handleChange} className="input-text-form" name="guestName" defaultValue={guestID.guestName} placeholder="Guest name" type="text" />
-                    <label className="" ><b>Full Name</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" name="guestFullName" defaultValue={guestID.guestFullName} placeholder="Guest Full name" type="text" />
-                    <label className="" ><b>Nights</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" defaultValue={data.nights} name="roomName" placeholder="Room" type="text" />
-                    <label className="" ><b>Price x Night</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" defaultValue={roomID.roomPrice} name="roomID" placeholder="Room ID" type="text" />
-                    <label className="" ><b>Total</b></label>
-                    <input onChange={this.handleChange} disabled className="input-text-form" value={fullPrice.toString()} name="price" placeholder="Full price" type="number" />
-                </div>
-                <div className="content-main-forms ">
-                    <div className="content-main-forms-title">
-                        Info
+            < div className=" dashboard-container" >
+                <div className="form-main" >
+                    <div className="form-title">
+                        <div className="form-title-item">
+                            Set   Room
                     </div>
-                    <label className="" ><b>Extras</b></label>
+                    </div>
+                    <div className="form-body">
+                        <div className="form-body-item">
+                            <div className="form-body-data">
+                                Room
+                            </div>
+                            <div className="form-body-data">
+                                <input name="roomName" className="input-text-form" defaultValue={data.roomID.roomName} placeholder="Guest ID" type="text" />
 
-                    {extras}
-                    <div className="">
-                        <div className="content-main-forms-title">
-                            TOTAL :{total} €
+                            </div>
+                        </div>
+                        <div className="form-body-item">
+                            <div className="form-body-data">
+                                Guest
+                            </div>
+                            <div className="form-body-data">
+                                <input className="input-text-form" name="guestFullName" defaultValue={data.guestID.guestFullName} placeholder="Guest Full name" type="text" />
+                            </div>
+                        </div>
+                        <div className="form-body-item">
+                            <div className="form-body-data">
+                                Nights
+                            </div>
+                            <div className="form-body-data">
+                                <input className="input-text-form" defaultValue={data.nights} name="roomName" placeholder="Room" type="text" />
+
+                            </div>
+                        </div>
+                        <div className="form-body-item">
+                            <div className="form-body-data">
+                                Price x day
+                            </div>
+                            <div className="form-body-data">
+                                <input onChange={this.handleChange} className="input-text-form" defaultValue={data.roomID.roomPrice} name="roomID" placeholder="Room ID" type="text" />
+
+
+                            </div>
+                        </div>
+
+
+                        <div className="form-body-item">
+                            <div className="form-body-data">
+                                Total price
+                            </div>
+                            <div className="form-body-data">
+                                <input onChange={this.handleChange} disabled className="inpu-text-form" value={fullPrice} name="price" placeholder="Full price" type="number" />
+
+                            </div>
                         </div>
                     </div>
 
                 </div>
-                <div className="content-main-forms ">
-                    <div className="content-main-forms-title">
-                        Total
-                    </div>
-                    <div className="form-data-id">
-                        Room:   <span className="form-data-name-small">{fullPrice + "€"}</span>
-                    </div>
-                    <div className="form-data-id">
-                        Extras:   <span className="form-data-name-small">{total + "€"}</span>
-                    </div>
-                    <div className="content-main-forms-title">
-                        {fullPrice + total} €
-                    </div>
 
-                    <button onClick={this.handleDo} className="main-cards green">
-                        Checkout
-                    </button>
-
-
-                </div>
+            </div>
 
 
 
-            </div >
+
         )
     }
 }

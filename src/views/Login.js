@@ -31,7 +31,7 @@ class Login extends Component {
 
           });
 
-          if (user.type == "Guest") {
+          if (user.type === "Guest") {
             history.push("/guest");
           }
           cookie.save('currentUser', user, { path: '/' })

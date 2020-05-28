@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Sidebar from "../../components/Sidebar";
-import CardL from "../../components/cards/CardL";
 import apiClient from '../../services/loginService';
 import { Redirect } from 'react-router-dom'
 class AddRoom extends Component {
@@ -25,7 +23,7 @@ class AddRoom extends Component {
 
         const { roomName, roomType, roomFloor, roomWifi, roomPhone, roomPrice, state } = this.state
         apiClient.oneMoreRoom({ roomName, roomType, roomFloor, roomWifi, roomPhone, roomPrice, state }).then(() => {
-            this.setState({ redirect: "/rooms/" });
+            this.setState({ redirect: "/home" });
         }).catch(() => {
             this.setState({ error: "Not valid" });
 
@@ -67,8 +65,96 @@ class AddRoom extends Component {
         }
         return (
             <div>
-                <Sidebar />
+
                 <form onSubmit={this.handleSubmit}>
+                    <div className="form-main">
+                        <div className="form-title">
+                            <div className="form-title-item">
+                                Add Room
+                        </div>
+                        </div>
+                        <div className="form-body">
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Room name
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} name="roomName" className="input-text-form" defaultValue="" placeholder="Room Number" type="text" />
+
+                                </div>
+                            </div>
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Room Type
+                            </div>
+                                <div className="form-body-data">
+                                    <select name="roomType" onChange={this.handleChange} className="input-text-select" >
+                                        <option value="Double" >Double</option>
+                                        <option value="Single" >Single</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Room Floor
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="roomFloor" defaultValue="" placeholder="Room Floor" type="text" />
+
+                                </div>
+                            </div>
+
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Room Wifi
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="roomWifi" defaultValue="" placeholder="Room Wifi" type="text" />
+
+                                </div>
+                            </div>
+
+
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Room Phone
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="roomPhone" defaultValue="" placeholder="Room Phone" type="text" />
+
+                                </div>
+                            </div>
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Room Price
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="roomPrice" defaultValue="" placeholder="Room Price" type="text" />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div className="form-title">
+                            <div className="form-title-item">
+                                <button type="submit" className="button-submit" >
+                                    Add
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+                {/* <form onSubmit={this.handleSubmit}>
                     <div className="content-main-forms">
                         <div className="content-main-forms-title">
                             Add Room
@@ -98,7 +184,7 @@ class AddRoom extends Component {
                         <input className="round-bottom " value="Add" type="submit" />
                         {this.state.alert}
                     </div>
-                </form>
+                </form> */}
             </div>
         )
     }

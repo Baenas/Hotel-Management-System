@@ -1,0 +1,176 @@
+body{
+    background-color:rgb(190, 190, 190);
+}
+
+
+.white{
+    color: rgb(204, 204, 204);
+}
+
+
+
+.side-main{
+    width:100%;
+}
+.side-main-left{
+    width:12%;
+ 
+}
+.main-side{ 
+    display: flex;
+    flex-direction: row;
+ 
+    justify-content: center;
+     
+}
+
+.title-info {
+    padding: 5px;
+    color: rgb(71, 71, 71);
+    font-size: 110%;
+background-color: rgb(68, 84, 114);
+    color: rgb(204, 204, 204);
+    font-weight: lighter;
+    /* background-color: rgba(49, 91, 182, 0.301); */
+ 
+}
+
+.app-box{
+    display: flex;    
+    flex-direction: column;
+
+}
+.app-box-item,.app-box-item-sub{
+   background-color : #435572;
+
+    padding:10px;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    color: rgba(234, 228, 228, 0.872);
+
+}
+.main-side-list{
+    display: flex;
+    flex-direction: row;
+    padding:0px;
+}
+.app-box-item-sub{
+    background-color : #6e83a7;
+    padding:5px;
+    margin:0px;
+    padding-left: 20px;
+}
+
+.app-box-item-sub-row{
+    flex-direction: row;
+}
+.app-box-item span {
+margin-left:20px; 
+}
+.app-box-title{
+margin-left: 10px;
+}
+
+
+.room-floor-container{
+
+    display: flex;  
+    width:100%;
+    flex-direction:row;
+}
+.room-card{
+    box-shadow: gray 2px 1px 2px;
+   padding: 10px;
+    background-color: #be4343;
+    margin:15px;
+}
+.room-card-top{
+    display: flex; 
+}
+.room-card-name{
+font-family: Arial;
+color: white;
+font-size: 12px;
+margin-right: 30px;
+font-weight: bold;
+}
+.room-card-state{
+font-family: Arial;
+color: white;
+font-size: 12px;
+font-weight: lighter;
+}
+
+
+.room-card-guest{
+    color:rgb(236, 208, 181);
+}
+
+.free{
+    background-color: #4ba077;
+}
+.form-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background-color:#778fb6;
+    box-shadow: 2px  2px 2px gray;
+
+    color:white;
+}
+.form-title-item{
+    font-size:120%;
+    padding:10px;
+}
+.form-title-item-small{
+    font-size: 90%;
+}
+.form-main{
+    margin-top: 20px;
+    height: 100%;
+    box-shadow: 2px  2px 2px gray;
+    margin-left: 20px;
+    
+}
+.form-body{
+    background-color:rgba(224, 224, 224, 0.795);
+}
+
+.form-body-item{
+    display: flex; 
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+.form-body-data{
+    padding: 10px;
+}
+
+.button-submit{
+    background-color:#6d86af;
+    border:none;
+    color:white;
+    font-size:110%
+}
+
+.guest-list{
+border-bottom:solid 1px rgb(190, 190, 190);
+padding:10px;
+}
+.guest-list:hover{
+color:rgba(72, 112, 181, 0.482);
+
+}
+
+
+.row{
+    display: flex;
+}
+
+.button-small{
+box-shadow: 1px 2px 1px black;
+    padding: 15px;
+    background-color: #445472e8;
+    color: #bebebe;
+}

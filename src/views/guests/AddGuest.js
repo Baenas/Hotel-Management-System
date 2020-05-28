@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Sidebar from "../../components/Sidebar";
-import CardL from "../../components/cards/CardL";
+
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
 import apiClient from "../../services/loginService";
@@ -55,36 +54,102 @@ class AddGuest extends Component {
         }
         return (
             <div>
-                <Sidebar />
                 <form onSubmit={this.handleSubmit}>
-                    <div className="content-col">
-                        <div className="content-main-forms">
-                            <div className="content-main-forms-title">
+                    <div className="form-main">
+                        <div className="form-title">
+                            <div className="form-title-item">
                                 Add Guest
-                         </div>
+                        </div>  </div>
+                        <div className="form-body">
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Guest name
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="guestName" placeholder="Guest name" type="text" />
+                                </div>
+                            </div>
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Guest Full Name
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="guestFullName" placeholder="Guest Full name" type="text" />
+
+                                </div>
+                            </div>
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Guest ID card
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="guestIdCard" placeholder="Guest Id card" type="text" />
+
+                                </div>
+                            </div>
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Guest Age
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="guestAge" placeholder="Guest Age" type="number" />
 
 
-                            <label className="" ><b>Name</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="guestName" placeholder="Guest name" type="text" />
-                            <label className="" ><b>Full Name</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="guestFullName" placeholder="Guest Full name" type="text" />
-                            <label className="" ><b>ID card</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="guestIdCard" placeholder="Guest Id card" type="text" />
-                            <label className="" ><b>Guest Age</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="guestAge" placeholder="Guest Age" type="text" />
-                            <label className="" ><b>Guest Email</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="guestEmail" placeholder="Guest Email" type="text" />
+                                </div>
+                            </div>
 
-                            <label className="" ><b>Guest Phone</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="guestPhone" placeholder="Guest Phone" type="text" />
-                            <label className="" ><b>Guest Country</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="guestCountry" placeholder="Guest Country" type="text" />
-                            <label className="" ><b>Guest City</b></label>
-                            <input onChange={this.handleChange} className="input-text-form" name="guestCity" placeholder="Guest City" type="text" />
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Guest Email
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="guestEmail" placeholder="Guest Email" type="text" />
+
+
+                                </div>
+                            </div>
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Guest Phone
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="guestPhone" placeholder="Guest Phone" type="text" />
+
+
+                                </div>
+                            </div>
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Guest country
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="guestCountry" placeholder="Guest Country" type="text" />
+                                </div>
+                            </div>
+
+                            <div className="form-body-item">
+                                <div className="form-body-data">
+                                    Guest City
+                            </div>
+                                <div className="form-body-data">
+                                    <input onChange={this.handleChange} className="input-text-form" name="guestCity" placeholder="Guest City" type="text" />
+
+                                </div>
+                            </div>
+
+
                         </div>
-                        <div className="content-main-forms">
-                            <input className="round-bottom " value="Add" type="submit" />
-                            {this.state.alert}
+                        <div className="form-title">
+                            <div className="form-title-item">
+                                <button type="submit" className="button-submit" >
+                                    Add
+                            </button>
+                                {this.state.alert}
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -11,9 +11,11 @@ class CheckingData extends Component {
         day_From: '',
         redirect: null,
         error: "",
-        roomID: "",
-        guestID: this.props.guest,
-        data: this.props.data
+        roomID: this.props.room,
+        roomName: "",
+        guestID: '',
+        data: this.props.data,
+        fullGuest: ''
     }
 
     makeid(length) {
@@ -58,7 +60,7 @@ class CheckingData extends Component {
         }).then(() => {
 
             this.setState({
-                redirect: '/rooms'
+                redirect: '/home'
             })
 
         }).catch(() => {
@@ -67,35 +69,125 @@ class CheckingData extends Component {
             })
         })
     }
+    idstate = () => {
+        let guestdata = localStorage.getItem('guest')
+
+        this.setState({
+            guestID: JSON.parse(guestdata)._id,
+            fullGuest: JSON.parse(guestdata)
+
+        })
+    }
     render() {
 
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
         }
         return (
-            <div>
-                <div className="content-main-forms ">
-                    <div className="content-main-forms-title">
-                        Info
-                      </div>
+            <div className="form-main">
+                <div className="form-title">
+                    <div className="form-title-item">
+                        Set   Room
+                        </div>
+                </div>
 
-                    <label className="" ><b>Room Name</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" disabled defaultValue={this.props.data.roomName} name="roomName" placeholder="Room" type="text" />
-                    <input onChange={this.handleChange} className="input-text-form" disabled defaultValue={this.props.data._id} name="roomID" placeholder="Room ID" type="text" />
-                    <label className="" ><b>Nights</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" name="nights" defaultValue={this.state.nights} placeholder="Nights" type="number" />
-                    <label className="" ><b>From</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" min='2020-01-01' value={this.state.day_From} name="day_From" placeholder="From" type="date" />
-                    <label className="" ><b>To</b></label>
-                    <input onChange={this.handleChange} className="input-text-form" value={this.state.day_To} name="day_To" placeholder="To" type="date" />
-                    <button onClick={this.handleChecking} className="button-fix">
+                <div className="form-body">
+
+
+                    <div className="form-body-item">
+                        <div className="form-body-data">
+                            Guest ID
+                            </div>
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} name="roomName" onClick={this.idstate} className="input-text-form" defaultValue={this.state.guestID} placeholder="Guest ID" type="text" />
+
+                        </div>
+                    </div>
+
+                    <div className="form-body-item">
+                        <div className="form-body-data">
+                            Guest Name
+                            </div>
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} name="roomName" onClick={this.idstate} className="input-text-form" defaultValue={this.state.fullGuest.guestName} placeholder="Guest Name" type="text" />
+
+                        </div>
+                    </div>
+                    <div className="form-body-item">
+                        <div className="form-body-data">
+                            Room name
+                            </div>
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} name="roomName" className="input-text-form" defaultValue={this.props.data.roomName} placeholder="Room Number" type="text" />
+
+                        </div>
+                    </div>
+
+                    <div className="form-body-item">
+                        <div className="form-body-data">
+                            Room ID
+                            </div>
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} className="input-text-form" disabled defaultValue={this.props.data._id} name="roomID" placeholder="Room ID" type="text" />
+
+
+                        </div>
+                    </div>
+                    <div className="form-body-item">
+                        <div className="form-body-data">
+                            Room Type
+                            </div>
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} className="input-text-form" disabled defaultValue={this.props.data.roomType} name="roomID" placeholder="Room ID" type="text" />
+
+
+                        </div>
+                    </div>
+                    <div className="form-body-item">
+                        <div className="form-body-data">
+                            Nights
+                            </div>
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} className="input-text-form" name="nights" defaultValue={this.state.nights} placeholder="Nights" type="number" />
+
+
+                        </div>
+                    </div>
+
+
+                    <div className="form-body-item">
+                        <div className="form-body-data">
+                            From
+                            </div>
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} className="input-text-form" min='2020-01-01' value={this.state.day_From} name="day_From" placeholder="From" type="date" />
+
+
+                        </div>
+                    </div>
+
+                    <div className="form-body-item">
+                        <div className="form-body-data">
+                            To
+                            </div>
+                        <div className="form-body-data">
+                            <input onChange={this.handleChange} className="input-text-form" value={this.state.day_To} name="day_To" placeholder="To" type="date" />
+                        </div>
+                    </div>
+                    <div className="form-title">
+                        <div onClick={this.handleChecking} className="form-title-item">
+                            Done
+                        </div>
+                    </div>
+
+                    {/* <button onClick={this.handleChecking} className="button-fix">
                         Checking
-                </button>
+                </button> */}
 
                     {this.state.error}
                 </div>
-
             </div>
+
         )
     }
 }
