@@ -20,23 +20,26 @@ class GuestOperation extends Component {
 
     componentDidMount() {
         // let id = this.props.match.params.id
-        let id = localStorage.getItem('idoperations')
+        if (localStorage.getItem('idoperations')) {
 
-        apiClient.getChecking(id).then((checkings) => {
-            if (!checkings.data) {
+            let id = localStorage.getItem('idoperations')
 
-            } else {
-                this.setState({
-                    data: checkings.data,
-                    guest: checkings.data.guestID,
-                    room: checkings.data.roomID
+            apiClient.getChecking(id).then((checkings) => {
+                if (!checkings.data) {
 
-                })
-                localStorage.setItem('id', checkings.data.guestID._id)
+                } else {
+                    this.setState({
+                        data: checkings.data,
+                        guest: checkings.data.guestID,
+                        room: checkings.data.roomID
 
-            }
-        })
+                    })
+                    localStorage.setItem('id', checkings.data.guestID._id)
 
+                }
+            })
+
+        }
     }
 
     render() {
