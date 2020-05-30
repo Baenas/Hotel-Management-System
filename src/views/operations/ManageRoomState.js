@@ -68,7 +68,7 @@ class ManageRoomState extends Component {
                         <td className="title-info">{elem.roomID.roomPrice}</td>
                         <td className="title-info">{elem.roomID.roomPrice * elem.nights}</td>
                         <td className="title-info">{elem.day_From + " - " + elem.day_To}</td>
-                        <td className="" onClick={() => { localStorage.setItem('idoperations', elem._id) }} ><button className="button-small" type="submit" >Select</button></td>
+                        <td className="" onClick={() => { localStorage.setItem('idoperations', elem._id, 'id', elem.guestID._id) }}  ><button className="button-small" type="submit" >Select</button></td>
                         {/* <td className="table-item-red" type="submit"><Link to={"/manageroom?out=" + .guestID._id} >OUT</Link></td> */}
                         {/* <td className="button-fix" >  <Link to={"/manageroom/" + elem._id}> GO </Link>  </td> */}
 

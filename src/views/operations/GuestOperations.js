@@ -24,6 +24,7 @@ class GuestOperation extends Component {
 
         apiClient.getChecking(id).then((checkings) => {
             if (!checkings.data) {
+
             } else {
                 this.setState({
                     data: checkings.data,

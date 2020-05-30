@@ -49,7 +49,7 @@ class Checkout extends Component {
         //             </div>
 
         //         </div>)
-        // });
+        // }); z+ 
         // const total = data.extra.reduce((accum, item) => accum + item.price, 0)
 
         console.log(data.extras)
