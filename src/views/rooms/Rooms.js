@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Modal from 'react-modal';
 import TopBar from '../../components/bars/Topbar'
+import SideBar from '../../components/bars/Sidebar'
+
 
 import { Link } from "react-router-dom";
 import apiClient from "../../services/loginService";
@@ -86,6 +88,7 @@ class Rooms extends Component {
 
       <div >
         <TopBar />
+
 
 
         <div className="">

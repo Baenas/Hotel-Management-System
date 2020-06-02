@@ -5,7 +5,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
-        <div className="  sidenav">
+        <div className="sidenav">
           <a className="sidenav-list-item" href="/">
             <span className="iconify" data-icon="ant-design:dashboard-twotone" data-inline="true"></span>
             <span className="icon-text">Dashboard</span>

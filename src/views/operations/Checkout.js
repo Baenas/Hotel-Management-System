@@ -38,19 +38,19 @@ class Checkout extends Component {
         const { data } = this.state
         let fullPrice = data.roomID.roomPrice * data.nights
         console.log(data.extra)
-        // const extras = data.extra.map(function (elem, index) {
-        //     return (
-        //         <div key={index}>
-        //             <div className="form-data-name">
-        //                 Name:   <span className="form-data-name-small">{elem.name} {elem.description}</span>
-        //             </div>
-        //             <div className="form-data-id">
-        //                 Price:   <span className="form-data-name-small">{elem.price + "€"}</span>
-        //             </div>
+        const extras = data.extra.map(function (elem, index) {
+            return (
+                <div key={index}>
+                    <div className="form-data-name">
+                        Name:   <span className="form-data-name-small">{elem.name} {elem.description}</span>
+                    </div>
+                    <div className="form-data-id">
+                        Price:   <span className="form-data-name-small">{elem.price + "€"}</span>
+                    </div>
 
-        //         </div>)
-        // }); z+ 
-        // const total = data.extra.reduce((accum, item) => accum + item.price, 0)
+                </div>)
+        });
+        const total = data.extra.reduce((accum, item) => accum + item.price, 0)
 
         console.log(data.extras)
         return (
@@ -100,12 +100,23 @@ class Checkout extends Component {
                         </div>
 
 
+
+                        <div className="form-body-item">
+                            <div className="form-body-data">
+                                Extra price
+                            </div>
+                            <div className="form-body-data">
+                                <input disabled className="inpu-text-form" value={total} name="price" type="number" />
+
+                            </div>
+                        </div>
+
                         <div className="form-body-item">
                             <div className="form-body-data">
                                 Total price
                             </div>
                             <div className="form-body-data">
-                                <input disabled className="inpu-text-form" value={fullPrice} name="price" placeholder="Full price" type="number" />
+                                <input disabled className="inpu-text-form" value={fullPrice + total} name="price" placeholder="Full price" type="number" />
 
                             </div>
                         </div>

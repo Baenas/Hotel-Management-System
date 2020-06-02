@@ -28,7 +28,7 @@ body{
     padding: 5px;
     color: rgb(71, 71, 71);
     font-size: 110%;
-background-color: rgb(68, 84, 114);
+    background-color: rgb(68, 84, 114);
     color: rgb(204, 204, 204);
     font-weight: lighter;
     /* background-color: rgba(49, 91, 182, 0.301); */
@@ -173,4 +173,20 @@ box-shadow: 1px 2px 1px black;
     padding: 15px;
     background-color: #445472e8;
     color: #bebebe;
+}
+
+.extra-main{
+    width:100px;
+    background-color : #435572;
+    padding:10px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    color: rgba(234, 228, 228, 0.872);
+    margin:5px;
+}
+.extra-content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
